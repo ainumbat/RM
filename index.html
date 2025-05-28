@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rashid Mehmood - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4A90E2; /* Modern Blue */
-            --secondary-color: #6C757D; /* Muted Grey */
-            --accent-color: #28A745; /* Green for highlights */
-            --bg-light: #F0F2F5; /* Light grey background */
-            --text-dark: #343A40; /* Dark text */
-            --card-bg: #FFFFFF; /* White card background */
-            --border-color: #DEE2E6; /* Light border */
-            --shadow-light: rgba(0, 0, 0, 0.08);
-            --shadow-medium: rgba(0, 0, 0, 0.12);
+            --primary-color: #00FF00; /* Neon Green for highlights */
+            --secondary-color: #888888; /* Muted Grey for secondary text */
+            --accent-color: #00FFFF; /* Cyan for additional accents */
+            --bg-dark: #1A1A1A; /* Dark background */
+            --text-light: #E0E0E0; /* Light text */
+            --card-bg: #2A2A2A; /* Slightly lighter dark for cards */
+            --border-color: #3A3A3A; /* Dark border */
+            --shadow-dark: rgba(0, 255, 0, 0.15); /* Green glow shadow */
+            --shadow-medium: rgba(0, 255, 0, 0.25);
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Fira Code', monospace; /* Linux terminal font */
             line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             scroll-behavior: smooth;
             overflow-x: hidden; /* Prevent horizontal scroll */
             position: relative;
@@ -39,54 +40,63 @@
             width: 100%;
             height: 100%;
             background:
-                radial-gradient(circle at 10% 20%, rgba(74,144,226,0.05) 0%, rgba(74,144,226,0.01) 50%, transparent 100%),
-                radial-gradient(circle at 90% 80%, rgba(40,167,69,0.05) 0%, rgba(40,167,69,0.01) 50%, transparent 100%),
+                radial-gradient(circle at 10% 20%, rgba(0,255,0,0.05) 0%, rgba(0,255,0,0.01) 50%, transparent 100%),
+                radial-gradient(circle at 90% 80%, rgba(0,255,255,0.05) 0%, rgba(0,255,255,0.01) 50%, transparent 100%),
                 repeating-linear-gradient(
                     45deg,
-                    rgba(0,0,0,0.02) 0px,
-                    rgba(0,0,0,0.02) 2px,
+                    rgba(0,255,0,0.01) 0px,
+                    rgba(0,255,0,0.01) 2px,
+                    transparent 2px,
+                    transparent 4px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    rgba(0,255,255,0.01) 0px,
+                    rgba(0,255,255,0.01) 2px,
                     transparent 2px,
                     transparent 4px
                 );
-            background-size: 100% 100%, 100% 100%, 20px 20px;
-            opacity: 0.7;
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+            opacity: 0.8;
             z-index: -1;
             pointer-events: none; /* Allow clicks through */
         }
 
-       .container {
+      .container {
             max-width: 1100px;
             margin: 30px auto;
             padding: 30px;
             background-color: var(--card-bg);
             box-shadow: 0 8px 30px var(--shadow-medium);
-            border-radius: 15px;
+            border-radius: 0; /* Removed border-radius for terminal look */
             position: relative;
             z-index: 1;
+            border: none; /* Removed border */
         }
 
-       .hero-section {
+      .hero-section {
             text-align: center;
             padding: 60px 20px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #6dd5ed 100%);
-            color: white;
-            border-radius: 15px 15px 0 0;
+            background: linear-gradient(135deg, #003300 0%, #006600 100%); /* Darker green gradient */
+            color: var(--primary-color);
+            border-radius: 0; /* Removed border-radius */
             margin: -30px -30px 30px -30px; /* Extend to edges of container */
             position: relative;
             overflow: hidden;
+            border-bottom: 2px solid var(--primary-color);
         }
 
-       .hero-section::before {
+      .hero-section::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/><path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(0,255,0,0.08)"/><path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="rgba(0,255,255,0.08)"/></svg>') repeat;
             background-size: 100px 100px;
             animation: backgroundMove 60s linear infinite;
-            opacity: 0.3;
+            opacity: 0.4;
             z-index: 0;
         }
 
@@ -95,37 +105,55 @@
             to { transform: translate(-100px, -100px); }
         }
 
-       .hero-content {
+      .hero-content {
             position: relative;
             z-index: 1;
         }
 
-       .hero-section h1 {
+      .hero-section h1 {
             font-family: 'Montserrat', sans-serif;
             margin-bottom: 10px;
             font-size: 3.5em;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 0 10px var(--primary-color); /* Green glow */
         }
 
-       .hero-section p {
+      .hero-section p {
             font-size: 1.4em;
             font-weight: 300;
             opacity: 0.9;
+            color: var(--text-light);
+        }
+
+      .typed-text {
+            color: var(--accent-color); /* Cyan for typing effect */
+            font-weight: 600;
         }
 
         section {
             margin-bottom: 40px;
             padding: 25px;
-            border-radius: 10px;
+            border-radius: 0; /* Removed border-radius */
             background-color: var(--card-bg);
-            box-shadow: 0 4px 15px var(--shadow-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: none; /* Removed box-shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: none; /* Removed border */
+            border-top: 1px dashed var(--border-color); /* Subtle separator */
+            border-bottom: 1px dashed var(--border-color); /* Subtle separator */
+        }
+
+        section:first-of-type {
+            border-top: none; /* No top border for the first section */
+        }
+
+        section:last-of-type {
+            border-bottom: none; /* No bottom border for the last section */
         }
 
         section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 20px var(--shadow-medium);
+            box-shadow: 0 0 15px var(--shadow-medium); /* Add glow on hover */
+            border-color: var(--primary-color); /* Glow on hover */
         }
 
         section h2 {
@@ -137,40 +165,41 @@
             font-size: 2.2em;
             font-weight: 700;
             text-align: center;
+            text-shadow: 0 0 5px rgba(0,255,0,0.5);
         }
 
-       .contact-info p {
+      .contact-info p {
             margin: 8px 0;
             font-size: 1.1em;
         }
 
-       .contact-info a {
-            color: var(--primary-color);
+      .contact-info a {
+            color: var(--accent-color); /* Cyan links */
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-       .contact-info a:hover {
-            color: #0056b3;
+      .contact-info a:hover {
+            color: var(--primary-color);
             text-decoration: underline;
         }
 
-       .skills-grid {
+      .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
-       .skill-category {
-            background-color: var(--bg-light);
+      .skill-category {
+            background-color: #333333; /* Slightly different dark for skill categories */
             padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 0; /* Removed border-radius */
+            border: 1px solid var(--border-color); /* Kept a subtle border for internal elements */
+            box-shadow: none; /* Removed box-shadow */
         }
 
-       .skill-category h3 {
-            color: var(--accent-color);
+      .skill-category h3 {
+            color: var(--primary-color);
             margin-top: 0;
             margin-bottom: 15px;
             font-size: 1.4em;
@@ -178,36 +207,37 @@
             padding-bottom: 10px;
         }
 
-       .skill-category ul {
+      .skill-category ul {
             list-style: none;
             padding: 0;
         }
 
-       .skill-category ul li {
+      .skill-category ul li {
             padding: 8px 0;
-            border-bottom: 1px dotted #e0e0e0;
+            border-bottom: 1px dotted #444444;
             font-size: 1em;
         }
 
-       .skill-category ul li:last-child {
+      .skill-category ul li:last-child {
             border-bottom: none;
         }
 
-       .experience-item,.project-item {
+      .experience-item,.project-item {
             margin-bottom: 30px;
             padding: 20px;
             border-left: 5px solid var(--primary-color);
-            background-color: #e6f7ff; /* Lighter blue for these sections */
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
+            background-color: #222222; /* Darker background for these items */
+            border-radius: 0; /* Removed border-radius */
+            box-shadow: none; /* Removed box-shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-       .experience-item:hover,.project-item:hover {
+      .experience-item:hover,.project-item:hover {
             transform: translateX(5px);
+            box-shadow: 0 0 10px var(--shadow-medium); /* Add glow on hover */
         }
 
-       .experience-item h3,.project-item h3 {
+      .experience-item h3,.project-item h3 {
             color: var(--primary-color);
             margin-top: 0;
             margin-bottom: 8px;
@@ -215,24 +245,24 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-       .experience-item p.duration,.project-item p.duration {
+      .experience-item p.duration,.project-item p.duration {
             font-style: italic;
             color: var(--secondary-color);
             margin-bottom: 15px;
             font-size: 0.95em;
         }
 
-       .experience-item ul,.project-item ul {
+      .experience-item ul,.project-item ul {
             list-style: disc;
             margin-left: 25px;
             padding: 0;
         }
 
-       .experience-item li,.project-item p {
+      .experience-item li,.project-item p {
             margin-bottom: 8px;
         }
 
-       .qualities-list {
+      .qualities-list {
             list-style: none;
             padding: 0;
             display: flex;
@@ -242,31 +272,40 @@
             margin-bottom: 25px;
         }
 
-       .qualities-list li {
-            background-color: var(--accent-color);
-            color: white;
+      .qualities-list li {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 0.95em;
             font-weight: 600;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
 
-       .bad-qualities-list li {
-            background-color: #DC3545; /* Red for bad qualities */
+      .qualities-list li:hover {
+            background-color: var(--accent-color);
         }
 
-       .tips-list {
+      .bad-qualities-list li {
+            background-color: #CC0000; /* Red for bad qualities */
+        }
+
+      .bad-qualities-list li:hover {
+            background-color: #FF3333;
+        }
+
+      .tips-list {
             list-style: decimal;
             margin-left: 25px;
             padding: 0;
         }
 
-       .tips-list li {
+      .tips-list li {
             margin-bottom: 8px;
         }
 
-       .whatsapp-button {
+      .whatsapp-button {
             display: inline-flex; /* Use flex for icon alignment */
             align-items: center;
             background-color: #25D366; /* WhatsApp green */
@@ -277,18 +316,19 @@
             font-weight: bold;
             font-size: 1.1em;
             margin-top: 25px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-       .whatsapp-button:hover {
+      .whatsapp-button:hover {
             background-color: #1DA851;
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
-       .whatsapp-button.icon {
+      .whatsapp-button.icon {
             margin-right: 10px;
-            font-size: 1.3em; /* Adjust icon size if using Font Awesome */
+            font-size: 1.3em;
         }
 
         footer {
@@ -302,44 +342,44 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-           .container {
+         .container {
                 margin: 20px auto;
                 padding: 20px;
             }
-           .hero-section {
+         .hero-section {
                 padding: 40px 20px;
                 margin: -20px -20px 20px -20px;
             }
-           .hero-section h1 {
+         .hero-section h1 {
                 font-size: 2.8em;
             }
-           .hero-section p {
+         .hero-section p {
                 font-size: 1.2em;
             }
             section h2 {
                 font-size: 2em;
             }
-           .skills-grid {
+         .skills-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 20px;
             }
         }
 
         @media (max-width: 768px) {
-           .container {
+         .container {
                 margin: 15px;
                 padding: 15px;
-                border-radius: 10px;
+                border-radius: 0;
             }
-           .hero-section {
+         .hero-section {
                 padding: 30px 15px;
                 margin: -15px -15px 15px -15px;
-                border-radius: 10px 10px 0 0;
+                border-radius: 0;
             }
-           .hero-section h1 {
+         .hero-section h1 {
                 font-size: 2.2em;
             }
-           .hero-section p {
+         .hero-section p {
                 font-size: 1em;
             }
             section {
@@ -351,35 +391,35 @@
                 padding-bottom: 10px;
                 margin-bottom: 20px;
             }
-           .skills-grid {
+         .skills-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-           .whatsapp-button {
+         .whatsapp-button {
                 padding: 12px 25px;
                 font-size: 1em;
             }
         }
 
         @media (max-width: 480px) {
-           .container {
+         .container {
                 margin: 10px;
                 padding: 10px;
             }
-           .hero-section {
+         .hero-section {
                 padding: 25px 10px;
                 margin: -10px -10px 10px -10px;
             }
-           .hero-section h1 {
+         .hero-section h1 {
                 font-size: 1.8em;
             }
-           .hero-section p {
+         .hero-section p {
                 font-size: 0.9em;
             }
             section h2 {
                 font-size: 1.5em;
             }
-           .qualities-list li {
+         .qualities-list li {
                 padding: 8px 15px;
                 font-size: 0.85em;
             }
@@ -391,65 +431,13 @@
         <div class="hero-section">
             <div class="hero-content">
                 <h1>Rashid Mehmood</h1>
-                <p>Software Architect & Full-Stack Developer | AI Enthusiast & Researcher</p>
+                <p>
+                    <span id="typed-output" class="typed-text"></span>
+                </p>
             </div>
         </div>
 
-        <section class="contact-info">
-            <h2>Contact Information</h2>
-            <p><strong>Father Name:</strong> Mumraiz Khan</p>
-            <p><strong>Address:</strong> Street # 10, Range road, Rawalpindi, Pakistan</p>
-            <p><strong>Date of Birth:</strong> 05-11-1992</p>
-            <p><strong>Mobile:</strong> +92-336-0563639</p>
-            <p><strong>Landline:</strong> 051-5490745</p>
-            <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/iamprodev" target="_blank">linkedin.com/in/iamprodev</a></p>
-            <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
-                <span class="icon">&#x2709;</span> Chat on WhatsApp
-            </a>
-        </section>
-
-        <section class="about-me">
-            <h2>About Me</h2>
-            <h3>My Good Qualities</h3>
-            <ul class="qualities-list">
-                <li>Efficient code</li>
-                <li>Ask smart questions</li>
-                <li>Try to complete work early</li>
-                <li>Communicate with care</li>
-                <li>Solution oriented approach</li>
-                <li>Love to learn new things</li>
-                <li>Lead in the team</li>
-            </ul>
-
-            <h3>My Bad Qualities</h3>
-            <ul class="qualities-list bad-qualities-list">
-                <li>Late Night Browsing</li>
-                <li>I don't like my design</li>
-                <li>More development at the end</li>
-                <li>I don't like to rely on other people</li>
-                <li>Addiction of Netflix and Video Games (COD 4 MW)</li>
-            </ul>
-
-            <h3>A Long Break & Entry into AI</h3>
-            <p>Thanks to extensive coding experience gained through freelancing and an innovative final-year project during university, I was fortunate to receive job offers from three companies during my last semester. I joined one of these companies the very next day after completing my degree. Even during my bachelor's studies, I worked as a freelance web developer, handling various small-scale projects. Over my 8-year professional career, I worked for three companies without ever having a gap between jobs. Each time I left one company, I started at the next on the very next day. However, this relentless pace transformed me from a gym-going, fit athlete into a sedentary desk-bound nerd. By 2024, I realized the need for a much-needed long break to refocus and rejuvenate.</p>
-            <p>I've always been interested in AI and Machine Learning, but my demanding full-time jobs left little room for exploration. In the third quarter of 2024, I finally decided to pursue my curiosity for AI. I started by revisiting foundational concepts in Linear Algebra, Calculus, and Statistics to build a strong base for AI. Learning Python was my next step, and it felt incredibly intuitive compared to the steep learning curve of PHP. Since I was already familiar with PHP's Laravel framework, I chose to explore Django, Python’s powerful web framework, as a fallback for web development. Django was not only easy to learn but also a robust tool that broadened my programming capabilities.</p>
-
-            <h3>Journey Into Research Papers</h3>
-            <p>With the basics of Machine Learning in place, I began reading research papers to understand cutting-edge advancements in AI. My journey led me to explore Large Language Models (LLMs) and the transformers architecture through the seminal paper "Attention is All You Need." Along the way, I encountered papers like "Alice in the Borderland" and "Reversal Curse," which highlighted some inherent limitations of LLMs. One paper that truly inspired me was "On the Measure of Intelligence" by Dr. Francis Chollet, whose work encouraged me to delve deeper into these limitations. Motivated by these insights, I began working on my research paper titled "Can Intelligence Emerge Through Merely Knowing All the Answers?"</p>
-            <p>This journey has been transformative, blending my passion for AI with a deeper understanding of its challenges and possibilities.</p>
-
-            <h3>Hobbies and Interests</h3>
-            <p>I enjoy a diverse range of hobbies that keep me engaged and fulfilled. These include watching Netflix for relaxation and entertainment, playing cricket to stay active, and indulging in immersive gaming sessions with Call of Duty: Modern Warfare. I also have a passion for repair and maintenance work at home, which allows me to channel my creativity and technical skills. Additionally, I take great interest in minimalist interior design, focusing on creating clean, functional, and aesthetically pleasing spaces.</p>
-
-            <h3>Passion for Construction</h3>
-            <p>I developed a deep love for construction at an early age, inspired by watching shows like MegaStructures on National Geographic and Discovery Channel. From a young age, I was captivated by building and design, often saving my pocket money to purchase tools for construction-related tasks—ranging from simple screwdrivers to hammer drill and advanced electrical equipment.</p>
-            <p>Over the years, I have personally designed residential homes spanning 1,500 to 5,000 square feet, including both single and double-story structures, using the online tool Homestyler.com. Beyond design, I actively participated in hands-on work, completing electrical and plumbing installations for most of these homes.</p>
-            <p>In one of my projects, I installed a comprehensive security system featuring motion detection alarms and integrated lighting. Additionally, I successfully carried out marble and tile work, installed wall paneling, and executed detailed interior designs.</p>
-            <p>Most notably, I designed and installed a 6kW hybrid solar system at my home, taking responsibility for every aspect—from constructing an elevated structure to laying electrical wiring, setting up solar panels, inverters, and control systems, as well as integrating safety breakers. This achievement reflects my dedication to sustainable living and my ability to manage complex technical projects.</p>
-        </section>
-
-        <section class="academic-professional">
+        <section class="academic-professional" data-aos="fade-up">
             <h2>Academic and Professional Background</h2>
             <h3>Education</h3>
             <p><strong>School:</strong> High Aims School (1999 - 2008), Range Road, Rawalpindi (Playgroup to 8th grade)</p>
@@ -476,7 +464,7 @@
             </ul>
         </section>
 
-        <section class="technical-skills">
+        <section class="technical-skills" data-aos="fade-up" data-aos-delay="100">
             <h2>Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
@@ -541,7 +529,7 @@
             </div>
         </section>
 
-        <section class="professional-experience">
+        <section class="professional-experience" data-aos="fade-up" data-aos-delay="200">
             <h2>Professional Work Experience</h2>
             <div class="experience-item">
                 <h3>Freelancing</h3>
@@ -579,7 +567,7 @@
             </div>
         </section>
 
-        <section class="projects">
+        <section class="projects" data-aos="fade-up" data-aos-delay="300">
             <h2>My Projects</h2>
             <div class="project-item">
                 <h3>Final Year Project - Curiosity Theme Artisan (CTA) – The Ultimate WordPress Theme Builder</h3>
@@ -594,7 +582,61 @@
             </div>
         </section>
 
-        <section class="useful-tips">
+        <section class="contact-info" data-aos="fade-up">
+            <h2>Contact Information</h2>
+            <p><strong>Father Name:</strong> Mumraiz Khan</p>
+            <p><strong>Address:</strong> Street # 10, Range road, Rawalpindi, Pakistan</p>
+            <p><strong>Date of Birth:</strong> 05-11-1992</p>
+            <p><strong>Mobile:</strong> +92-336-0563639</p>
+            <p><strong>Landline:</strong> 051-5490745</p>
+            <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/iamprodev" target="_blank">linkedin.com/in/iamprodev</a></p>
+            <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
+                <span class="icon">&#x2709;</span> Chat on WhatsApp
+            </a>
+        </section>
+
+        <section class="about-me" data-aos="fade-up">
+            <h2>About Me</h2>
+            <h3>My Good Qualities</h3>
+            <ul class="qualities-list">
+                <li>Efficient code</li>
+                <li>Ask smart questions</li>
+                <li>Try to complete work early</li>
+                <li>Communicate with care</li>
+                <li>Solution oriented approach</li>
+                <li>Love to learn new things</li>
+                <li>Lead in the team</li>
+            </ul>
+
+            <h3>My Bad Qualities</h3>
+            <ul class="qualities-list bad-qualities-list">
+                <li>Late Night Browsing</li>
+                <li>I don't like my design</li>
+                <li>More development at the end</li>
+                <li>I don't like to rely on other people</li>
+                <li>Addiction of Netflix and Video Games (COD 4 MW)</li>
+            </ul>
+
+            <h3>A Long Break & Entry into AI</h3>
+            <p>Thanks to extensive coding experience gained through freelancing and an innovative final-year project during university, I was fortunate to receive job offers from three companies during my last semester. I joined one of these companies the very next day after completing my degree. Even during my bachelor's studies, I worked as a freelance web developer, handling various small-scale projects. Over my 8-year professional career, I worked for three companies without ever having a gap between jobs. Each time I left one company, I started at the next on the very next day. However, this relentless pace transformed me from a gym-going, fit athlete into a sedentary desk-bound nerd. By 2024, I realized the need for a much-needed long break to refocus and rejuvenate.</p>
+            <p>I've always been interested in AI and Machine Learning, but my demanding full-time jobs left little room for exploration. In the third quarter of 2024, I finally decided to pursue my curiosity for AI. I started by revisiting foundational concepts in Linear Algebra, Calculus, and Statistics to build a strong base for AI. Learning Python was my next step, and it felt incredibly intuitive compared to the steep learning curve of PHP. Since I was already familiar with PHP's Laravel framework, I chose to explore Django, Python’s powerful web framework, as a fallback for web development. Django was not only easy to learn but also a robust tool that broadened my programming capabilities.</p>
+
+            <h3>Journey Into Research Papers</h3>
+            <p>With the basics of Machine Learning in place, I began reading research papers to understand cutting-edge advancements in AI. My journey led me to explore Large Language Models (LLMs) and the transformers architecture through the seminal paper "Attention is All You Need." Along the way, I encountered papers like "Alice in the Borderland" and "Reversal Curse," which highlighted some inherent limitations of LLMs. One paper that truly inspired me was "On the Measure of Intelligence" by Dr. Francis Chollet, whose work encouraged me to delve deeper into these limitations. Motivated by these insights, I began working on my research paper titled "Can Intelligence Emerge Through Merely Knowing All the Answers?"</p>
+            <p>This journey has been transformative, blending my passion for AI with a deeper understanding of its challenges and possibilities.</p>
+
+            <h3>Hobbies and Interests</h3>
+            <p>I enjoy a diverse range of hobbies that keep me engaged and fulfilled. These include watching Netflix for relaxation and entertainment, playing cricket to stay active, and indulging in immersive gaming sessions with Call of Duty: Modern Warfare. I also have a passion for repair and maintenance work at home, which allows me to channel my creativity and technical skills. Additionally, I take great interest in minimalist interior design, focusing on creating clean, functional, and aesthetically pleasing spaces.</p>
+
+            <h3>Passion for Construction</h3>
+            <p>I developed a deep love for construction at an early age, inspired by watching shows like MegaStructures on National Geographic and Discovery Channel. From a young age, I was captivated by building and design, often saving my pocket money to purchase tools for construction-related tasks—ranging from simple screwdrivers to hammer drill and advanced electrical equipment.</p>
+            <p>Over the years, I have personally designed residential homes spanning 1,500 to 5,000 square feet, including both single and double-story structures, using the online tool Homestyler.com. Beyond design, I actively participated in hands-on work, completing electrical and plumbing installations for most of these homes.</p>
+            <p>In one of my projects, I installed a comprehensive security system featuring motion detection alarms and integrated lighting. Additionally, I successfully carried out marble and tile work, installed wall paneling, and executed detailed interior designs.</p>
+            <p>Most notably, I designed and installed a 6kW hybrid solar system at my home, taking responsibility for every aspect—from constructing an elevated structure to laying electrical wiring, setting up solar panels, inverters, and control systems, as well as integrating safety breakers. This achievement reflects my dedication to sustainable living and my ability to manage complex technical projects.</p>
+        </section>
+
+        <section class="useful-tips" data-aos="fade-up">
             <h2>Useful Tips</h2>
             <ul class="tips-list">
                 <li>Set 3 goals for day, week, month, year and life</li>
@@ -610,9 +652,27 @@
         <p>&copy; 2025 Rashid Mehmood. All rights reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('Modern Portfolio page loaded successfully!');
+            // Initialize AOS
+            AOS.init({
+                duration: 800, // animation duration
+                once: true,    // whether animation should happen only once - while scrolling down
+            });
+
+            // Initialize Typed.js
+            var typed = new Typed('#typed-output', {
+                strings:['Developer','Programmer','AI Numbat'],
+                typeSpeed: 50,
+                backSpeed: 25,
+                loop: true,
+                showCursor: true,
+                cursorChar: '_', // Terminal-like cursor
+            });
+
+            console.log('Modern Dark Portfolio page loaded successfully!');
         });
     </script>
 </body>
