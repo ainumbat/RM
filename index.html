@@ -1,121 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashid Mehmood - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A90E2; /* Modern Blue */
+            --secondary-color: #6C757D; /* Muted Grey */
+            --accent-color: #28A745; /* Green for highlights */
+            --bg-light: #F0F2F5; /* Light grey background */
+            --text-dark: #343A40; /* Dark text */
+            --card-bg: #FFFFFF; /* White card background */
+            --border-color: #DEE2E6; /* Light border */
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative;
+        }
+
+        /* AI Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(74,144,226,0.05) 0%, rgba(74,144,226,0.01) 50%, transparent 100%),
+                radial-gradient(circle at 90% 80%, rgba(40,167,69,0.05) 0%, rgba(40,167,69,0.01) 50%, transparent 100%),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(0,0,0,0.02) 0px,
+                    rgba(0,0,0,0.02) 2px,
+                    transparent 2px,
+                    transparent 4px
+                );
+            background-size: 100% 100%, 100% 100%, 20px 20px;
+            opacity: 0.7;
+            z-index: -1;
+            pointer-events: none; /* Allow clicks through */
+        }
+
+       .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: var(--card-bg);
+            box-shadow: 0 8px 30px var(--shadow-medium);
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+       .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6dd5ed 100%);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            margin: -30px -30px 30px -30px; /* Extend to edges of container */
+            position: relative;
+            overflow: hidden;
+        }
+
+       .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/><path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+            background-size: 100px 100px;
+            animation: backgroundMove 60s linear infinite;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        @keyframes backgroundMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-100px, -100px); }
+        }
+
+       .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+       .hero-section h1 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+            font-size: 3.5em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+       .hero-section p {
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 15px var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: 700;
+            text-align: center;
+        }
+
+       .contact-info p {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
+       .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+       .contact-info a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+       .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+       .skill-category {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+       .skill-category h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+       .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+       .skill-category ul li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #e0e0e0;
+            font-size: 1em;
+        }
+
+       .skill-category ul li:last-child {
+            border-bottom: none;
+        }
+
+       .experience-item,.project-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 5px solid var(--primary-color);
+            background-color: #e6f7ff; /* Lighter blue for these sections */
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+       .experience-item:hover,.project-item:hover {
+            transform: translateX(5px);
+        }
+
+       .experience-item h3,.project-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1.8em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+       .experience-item p.duration,.project-item p.duration {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+       .experience-item ul,.project-item ul {
+            list-style: disc;
+            margin-left: 25px;
+            padding: 0;
+        }
+
+       .experience-item li,.project-item p {
+            margin-bottom: 8px;
+        }
+
+       .qualities-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+       .qualities-list li {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+       .bad-qualities-list li {
+            background-color: #DC3545; /* Red for bad qualities */
+        }
+
+       .tips-list {
+            list-style: decimal;
+            margin-left: 25px;
+            padding: 0;
+        }
+
+       .tips-list li {
+            margin-bottom: 8px;
+        }
+
+       .whatsapp-button {
+            display: inline-flex; /* Use flex for icon alignment */
+            align-items: center;
+            background-color: #25D366; /* WhatsApp green */
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+       .whatsapp-button:hover {
+            background-color: #1DA851;
+            transform: translateY(-2px);
+        }
+
+       .whatsapp-button.icon {
+            margin-right: 10px;
+            font-size: 1.3em; /* Adjust icon size if using Font Awesome */
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 25px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--secondary-color);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+           .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+           .hero-section {
+                padding: 40px 20px;
+                margin: -20px -20px 20px -20px;
+            }
+           .hero-section h1 {
+                font-size: 2.8em;
+            }
+           .hero-section p {
+                font-size: 1.2em;
+            }
+            section h2 {
+                font-size: 2em;
+            }
+           .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+           .container {
+                margin: 15px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+           .hero-section {
+                padding: 30px 15px;
+                margin: -15px -15px 15px -15px;
+                border-radius: 10px 10px 0 0;
+            }
+           .hero-section h1 {
+                font-size: 2.2em;
+            }
+           .hero-section p {
+                font-size: 1em;
+            }
+            section {
+                padding: 15px;
+                margin-bottom: 30px;
+            }
+            section h2 {
+                font-size: 1.8em;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+           .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+           .whatsapp-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+           .container {
+                margin: 10px;
+                padding: 10px;
+            }
+           .hero-section {
+                padding: 25px 10px;
+                margin: -10px -10px 10px -10px;
+            }
+           .hero-section h1 {
+                font-size: 1.8em;
+            }
+           .hero-section p {
+                font-size: 0.9em;
+            }
+            section h2 {
+                font-size: 1.5em;
+            }
+           .qualities-list li {
+                padding: 8px 15px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-tr from-blue-50 via-white to-purple-100 text-gray-800">
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Rashid Mehmood</h1>
+                <p>Software Architect & Full-Stack Developer | AI Enthusiast & Researcher</p>
+            </div>
+        </div>
 
-  <!-- Header -->
-  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Your Name</h1>
-      <nav class="space-x-4">
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#skills" class="hover:underline">Skills</a>
-        <a href="#projects" class="hover:underline">Projects</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-      </nav>
+        <section class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Father Name:</strong> Mumraiz Khan</p>
+            <p><strong>Address:</strong> Street # 10, Range road, Rawalpindi, Pakistan</p>
+            <p><strong>Date of Birth:</strong> 05-11-1992</p>
+            <p><strong>Mobile:</strong> +92-336-0563639</p>
+            <p><strong>Landline:</strong> 051-5490745</p>
+            <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/iamprodev" target="_blank">linkedin.com/in/iamprodev</a></p>
+            <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
+                <span class="icon">&#x2709;</span> Chat on WhatsApp
+            </a>
+        </section>
+
+        <section class="about-me">
+            <h2>About Me</h2>
+            <h3>My Good Qualities</h3>
+            <ul class="qualities-list">
+                <li>Efficient code</li>
+                <li>Ask smart questions</li>
+                <li>Try to complete work early</li>
+                <li>Communicate with care</li>
+                <li>Solution oriented approach</li>
+                <li>Love to learn new things</li>
+                <li>Lead in the team</li>
+            </ul>
+
+            <h3>My Bad Qualities</h3>
+            <ul class="qualities-list bad-qualities-list">
+                <li>Late Night Browsing</li>
+                <li>I don't like my design</li>
+                <li>More development at the end</li>
+                <li>I don't like to rely on other people</li>
+                <li>Addiction of Netflix and Video Games (COD 4 MW)</li>
+            </ul>
+
+            <h3>A Long Break & Entry into AI</h3>
+            <p>Thanks to extensive coding experience gained through freelancing and an innovative final-year project during university, I was fortunate to receive job offers from three companies during my last semester. I joined one of these companies the very next day after completing my degree. Even during my bachelor's studies, I worked as a freelance web developer, handling various small-scale projects. Over my 8-year professional career, I worked for three companies without ever having a gap between jobs. Each time I left one company, I started at the next on the very next day. However, this relentless pace transformed me from a gym-going, fit athlete into a sedentary desk-bound nerd. By 2024, I realized the need for a much-needed long break to refocus and rejuvenate.</p>
+            <p>I've always been interested in AI and Machine Learning, but my demanding full-time jobs left little room for exploration. In the third quarter of 2024, I finally decided to pursue my curiosity for AI. I started by revisiting foundational concepts in Linear Algebra, Calculus, and Statistics to build a strong base for AI. Learning Python was my next step, and it felt incredibly intuitive compared to the steep learning curve of PHP. Since I was already familiar with PHP's Laravel framework, I chose to explore Django, Python’s powerful web framework, as a fallback for web development. Django was not only easy to learn but also a robust tool that broadened my programming capabilities.</p>
+
+            <h3>Journey Into Research Papers</h3>
+            <p>With the basics of Machine Learning in place, I began reading research papers to understand cutting-edge advancements in AI. My journey led me to explore Large Language Models (LLMs) and the transformers architecture through the seminal paper "Attention is All You Need." Along the way, I encountered papers like "Alice in the Borderland" and "Reversal Curse," which highlighted some inherent limitations of LLMs. One paper that truly inspired me was "On the Measure of Intelligence" by Dr. Francis Chollet, whose work encouraged me to delve deeper into these limitations. Motivated by these insights, I began working on my research paper titled "Can Intelligence Emerge Through Merely Knowing All the Answers?"</p>
+            <p>This journey has been transformative, blending my passion for AI with a deeper understanding of its challenges and possibilities.</p>
+
+            <h3>Hobbies and Interests</h3>
+            <p>I enjoy a diverse range of hobbies that keep me engaged and fulfilled. These include watching Netflix for relaxation and entertainment, playing cricket to stay active, and indulging in immersive gaming sessions with Call of Duty: Modern Warfare. I also have a passion for repair and maintenance work at home, which allows me to channel my creativity and technical skills. Additionally, I take great interest in minimalist interior design, focusing on creating clean, functional, and aesthetically pleasing spaces.</p>
+
+            <h3>Passion for Construction</h3>
+            <p>I developed a deep love for construction at an early age, inspired by watching shows like MegaStructures on National Geographic and Discovery Channel. From a young age, I was captivated by building and design, often saving my pocket money to purchase tools for construction-related tasks—ranging from simple screwdrivers to hammer drill and advanced electrical equipment.</p>
+            <p>Over the years, I have personally designed residential homes spanning 1,500 to 5,000 square feet, including both single and double-story structures, using the online tool Homestyler.com. Beyond design, I actively participated in hands-on work, completing electrical and plumbing installations for most of these homes.</p>
+            <p>In one of my projects, I installed a comprehensive security system featuring motion detection alarms and integrated lighting. Additionally, I successfully carried out marble and tile work, installed wall paneling, and executed detailed interior designs.</p>
+            <p>Most notably, I designed and installed a 6kW hybrid solar system at my home, taking responsibility for every aspect—from constructing an elevated structure to laying electrical wiring, setting up solar panels, inverters, and control systems, as well as integrating safety breakers. This achievement reflects my dedication to sustainable living and my ability to manage complex technical projects.</p>
+        </section>
+
+        <section class="academic-professional">
+            <h2>Academic and Professional Background</h2>
+            <h3>Education</h3>
+            <p><strong>School:</strong> High Aims School (1999 - 2008), Range Road, Rawalpindi (Playgroup to 8th grade)</p>
+            <p><strong>School:</strong> EFA High School (2009 - 2010), Matriculation (9th and 10th grades) with 75% marks</p>
+            <p><strong>College:</strong> Army Public College (2011-2012), Westridge III, Rawalpindi, Intermediate studies with 70% marks</p>
+            <p><strong>University:</strong> University of Engineering and Technology (UET), Taxila (2013-2016), Bachelor's degree with a CGPA of 2.8</p>
+
+            <h3>Pakistan Army and Air Force Recruitment (2012)</h3>
+            <p>During the university application process in 2012, I also applied for the Short Service Commission in both the Army and Air Force, without prior preparation.</p>
+            <p>The selection process spanned multiple days and included:</p>
+            <ul>
+                <li><strong>Written Test:</strong> Covered Physics, Mathematics, General Knowledge, and English.</li>
+                <li><strong>Physical Test:</strong> Evaluated general physical abilities such as running, jumping, pull-ups, and chin-ups.</li>
+                <li><strong>Medical Test:</strong> Comprehensive medical examination by a panel of doctors.</li>
+                <li><strong>Psychological Interview:</strong> Conducted by a panel of Army officers and psychologists to assess temperament and decision-making abilities in complex scenarios.</li>
+            </ul>
+            <p>I successfully cleared all tests for both the Army and Air Force but chose not to proceed with the final selection process, as I had been accepted into my desired university and opted to pursue higher education.</p>
+
+            <h3>Honors and Achievements</h3>
+            <ul>
+                <li><strong>2015:</strong> Won the intra-university General Knowledge competition at Federal Urdu University.</li>
+                <li><strong>2016:</strong> Represented my university in web development competitions at IQRA University, Islamabad.</li>
+                <li><strong>Final Year Project:</strong> Presented my project at the annual exhibition hosted by FAST University, Islamabad.</li>
+            </ul>
+        </section>
+
+        <section class="technical-skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Operating Systems</h3>
+                    <ul>
+                        <li>Windows 98|XP|7|8|10</li>
+                        <li>Windows Server 2003</li>
+                        <li>Kali Linux</li>
+                        <li>MacOS</li>
+                        <li>Ubuntu</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>C, C++, C#</li>
+                        <li>Java, JavaScript</li>
+                        <li>PHP, Python (numpy, pytorch, tensor-flow)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li>Oracle, MySQL</li>
+                        <li>SQLite, MongoDB</li>
+                        <li>VectorDB</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>Python Django</li>
+                        <li>Php Laravel (PSR-12 coding style, Composer, Blade Template, Form Façade, Passport, Echo, Pusher, Voyger, Elixir, Mix, Artisan, Tinker, Eloquent)</li>
+                        <li>JavaScript (jQuery, Ajax, Vue, Angular-1, Node, npm, Gulp, Grunt, HighChart, noUiSlider, axious, JSON)</li>
+                        <li>CSS (Bootstrap, MDBootstrap, W3.css, Materizecss, Media Queries, LESS, SASS)</li>
+                        <li>HTML-5 (Semantic Elements, Canvas, Local Storage, Geolocation API, Required Attribute, Responsive Design, Drag and Drop API, WebSockets)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Software/Tools IDEs & Shells</h3>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>Eclipse, Sublime Text</li>
+                        <li>Php Storm, PyCharm</li>
+                        <li>GitHub</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Designing & Case tools</h3>
+                    <ul>
+                        <li>Software Ideas Modular</li>
+                        <li>Rational Rose</li>
+                        <li>Adobe Photoshop, Coral Draw</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>CMS</h3>
+                    <ul>
+                        <li>WordPress, Drupal, Joomla</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="professional-experience">
+            <h2>Professional Work Experience</h2>
+            <div class="experience-item">
+                <h3>Freelancing</h3>
+                <p class="duration">2015 - 2016</p>
+                <ul>
+                    <li>Did web development based freelancing at various platforms like freelancer.com, upwork and fiverr.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>VirEmp (viremp.com)</h3>
+                <p class="duration">Jan 2017 - July 2018</p>
+                <ul>
+                    <li>Worked as a Full-Stack PHP/Laravel Developer, focusing primarily on hybrid Point-of-Sale (POS) systems.</li>
+                    <li>Designed and developed complete ERP solutions for small-scale local businesses, tailoring systems to meet their unique operational needs.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>TechInsects (techinsects.com)</h3>
+                <p class="duration">Dec 2017 - Dec 2020</p>
+                <ul>
+                    <li>Initially started as a part-time Backend Developer but transitioned to a full-time Full-Stack PHP/Laravel Developer after a few months.</li>
+                    <li>Gained hands-on experience with international projects, including eptitude.co.in and gigclassifieds.com, which broadened my expertise in both frontend and backend technologies.</li>
+                    <li>Acquired proficiency in modern tools like Vue.js, WebRTC, and networking technologies such as sockets for real-time chat and audio/video communication.</li>
+                    <li>Took on leadership roles, managing development operations, leading teams, and engaging in direct client communication.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Asset Management Company (under Bigwave Ltd)</h3>
+                <p class="duration">Jan 2021 - Dec 2023</p>
+                <ul>
+                    <li>Signed a three-year contract with a blockchain-based asset management company under Bigwave Ltd (bigwavesoftware.com) as a Software Architect.</li>
+                    <li>Spearheaded the development of their flagship product from scratch, playing a pivotal role in its success.</li>
+                    <li>Gained extensive experience in blockchain technology and contributed to a product that achieved an estimated valuation of over $150 million USD by the time of my departure in December 2023.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>My Projects</h2>
+            <div class="project-item">
+                <h3>Final Year Project - Curiosity Theme Artisan (CTA) – The Ultimate WordPress Theme Builder</h3>
+                <p>Curiosity Theme Artisan (CTA) is an innovative platform designed for both end users and WordPress theme developers to create fully customized themes effortlessly. With CTA, anyone can build a professional WordPress theme without writing a single line of code.</p>
+                <p>For developers, CTA is a powerful tool that streamlines theme creation, enabling the development of premium-quality ($1000+) WordPress themes in minutes. Designed with an intuitive and user-friendly interface, CTA caters to the entire WordPress community—beginners, designers, and experienced developers—offering a seamless and efficient theme-building experience.</p>
+            </div>
+            <div class="project-item">
+                <h3>My Research Paper (Raw - not published yet)</h3>
+                <h4>Title: The Illusion of Intelligence: Evaluating Large Language Models Against Grounded Criteria of Artificial General Intelligence</h4>
+                <p><strong>Abstract:</strong> As large language models (LLMs) become central to AI applications, their perceived intelligence often masks critical limitations. While LLMs demonstrate fluent language use and problem-solving, they fundamentally lack context-awareness, self-reflection, and the ability to act under constraints. This paper identifies a core issue: current LLMs produce seemingly intelligent outputs without possessing the internal mechanisms that constitute true intelligence. They fail to recognize or address their own limitations—such as hallucinations, inefficiency, and lack of common sense—and have not autonomously developed tools to enhance their performance. To address this gap, we propose a novel three-step benchmark for Artificial General Intelligence (AGI): Audit, Generate, Implement (AGI). This framework evaluates whether an AI system can autonomously assess its own failures, generate alternative strategies, and implement optimal solutions—all within fixed resource constraints. This approach reflects the way humans solve problems efficiently and adaptively, beyond mere pattern recognition. Our findings show that scaling models alone is insufficient for AGI. We emphasize that genuine intelligence requires meta-cognition, resource management, and tool creation—traits absent in current LLMs. This work offers a new direction and evaluative standard for future AI research, emphasizing cognitive depth over superficial linguistic performance.</p>
+                <p><em>“Language serves as a medium for expressing intelligence, not as a substrate for its storage.”</em></p>
+            </div>
+        </section>
+
+        <section class="useful-tips">
+            <h2>Useful Tips</h2>
+            <ul class="tips-list">
+                <li>Set 3 goals for day, week, month, year and life</li>
+                <li>Avoid Screen Sucking, instead Read books</li>
+                <li>Don't say yes to too many thing</li>
+                <li>Never worry Alone, distribute your responsibilities</li>
+                <li>Don’t rely on anyone</li>
+            </ul>
+        </section>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="text-center py-20 px-4 bg-white shadow-inner">
-    <h2 class="text-4xl font-bold text-indigo-700">Hi, I'm Your Name</h2>
-    <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
-      Full-Stack Developer | Laravel + Vue.js | AI Explorer | Ubuntu Lover
-    </p>
-    <a href="#contact" class="inline-block mt-6 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full transition">
-      Let's Connect
-    </a>
-  </section>
+    <footer>
+        <p>&copy; 2025 Rashid Mehmood. All rights reserved.</p>
+    </footer>
 
-  <!-- About Section -->
-  <section id="about" class="max-w-4xl mx-auto px-6 py-16">
-    <h3 class="text-3xl font-semibold mb-4 text-purple-700">About Me</h3>
-    <p class="text-gray-700 leading-relaxed">
-      I’m a passionate developer with over 5 years of experience building powerful web applications using Laravel, Vue.js, and Inertia. I thrive on crafting clean code and beautiful UIs. I'm currently exploring AI and machine learning while building efficient tools and systems for businesses.
-    </p>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="bg-indigo-50 py-16 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h3 class="text-3xl font-semibold text-indigo-700 mb-8">Technical Skills</h3>
-      <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-6 text-center">
-        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-          <h4 class="font-bold text-lg text-indigo-600">Laravel</h4>
-          <p class="text-gray-600 mt-2">REST APIs, Inertia.js, Auth, Queues</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-          <h4 class="font-bold text-lg text-indigo-600">Vue.js</h4>
-          <p class="text-gray-600 mt-2">Components, Refs, Reactive UI</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-          <h4 class="font-bold text-lg text-indigo-600">MySQL</h4>
-          <p class="text-gray-600 mt-2">Database Design, Optimization</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-          <h4 class="font-bold text-lg text-indigo-600">Ubuntu</h4>
-          <p class="text-gray-600 mt-2">Local Hosting, Nginx, Composer</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-          <h4 class="font-bold text-lg text-indigo-600">AI/ML</h4>
-          <p class="text-gray-600 mt-2">PyTorch, ARC Puzzles, Gemini API</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-          <h4 class="font-bold text-lg text-indigo-600">Git & CI/CD</h4>
-          <p class="text-gray-600 mt-2">GitHub Actions, Bitbucket Pipelines</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-16 px-6 bg-white">
-    <div class="max-w-5xl mx-auto">
-      <h3 class="text-3xl font-semibold text-purple-700 mb-8">Projects</h3>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-gradient-to-tr from-purple-100 to-white p-6 rounded-xl shadow">
-          <h4 class="text-xl font-bold text-purple-700">Retail Billing System</h4>
-          <p class="mt-2 text-gray-600">
-            Laravel + Vue app for invoice management, credit tracking, and product handling for retailers.
-          </p>
-        </div>
-        <div class="bg-gradient-to-tr from-indigo-100 to-white p-6 rounded-xl shadow">
-          <h4 class="text-xl font-bold text-indigo-700">Grocery Store Site</h4>
-          <p class="mt-2 text-gray-600">
-            Modern grocery web system with infinite scroll, product suggestions, and offline support.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="bg-indigo-600 text-white py-16 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-3xl font-semibold mb-4">Get in Touch</h3>
-      <p class="mb-6 text-indigo-200">Email: your.email@example.com</p>
-      <div class="space-x-4">
-        <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-full hover:bg-indigo-100 transition">LinkedIn</a>
-        <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-full hover:bg-indigo-100 transition">GitHub</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center py-6 text-sm text-gray-500">
-    © 2025 Your Name. All rights reserved.
-  </footer>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Modern Portfolio page loaded successfully!');
+        });
+    </script>
 </body>
 </html>
-
