@@ -6,6 +6,7 @@
     <title>Rashid Mehmood - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #80BB80; /* Neon Green for highlights */
@@ -291,7 +292,7 @@
             box-shadow: 0 0 10px var(--shadow-medium); /* Add glow on hover */
         }
 
-      .experience-item h3,.project-item h3 {
+      .experience-item h3, .project-item h3, .skill-category h3, .box h3 {
             margin-top: 0;
             margin-bottom: 8px;
             font-family: 'Montserrat', sans-serif;
@@ -332,7 +333,7 @@
             color: var(--text-light);
             padding: 10px 20px;
             border-radius: 25px;
-            border: 1px solid #A2E177;
+/*            border: 1px solid #A2E177;*/
             font-size: 0.95em;
             font-weight: 600;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -340,15 +341,16 @@
         }
 
       .qualities-list li:hover {
-            background-color: var(--accent-color);
+          border: 1px solid #A2E177;
+          background-color: var(--bg-ubuntu);
         }
 
-      .bad-qualities-list li {
-/*            background-color: #CC0000; */
-            border: 1px solid #A2E177;
+      .good-qualities {
+          border: 1px solid #25D366;
+          background-color: #25D366;
         }
 
-      .bad-qualities-list li:hover {
+      .bad-qualities {
             background-color: #FF3333;
         }
 
@@ -499,11 +501,11 @@
                   </p>
                   <p>
                       &gt; 
-                      <span id="barcode-line" class="typed-text"></span>
+                      <span id="binary-line" class="typed-text"></span>
                   </p>
                   <p>
                       &gt; 
-                      <span id="binary-line" class="typed-text"></span>
+                      <span id="barcode-line" class="typed-text"></span>
                   </p>
               </div>
           </div>
@@ -511,13 +513,14 @@
           <section class="contact-info" data-aos="fade-up">
               <h2>&gt; nl -ba /Portfolio/<span class="section-title">Contact_Information.txt</span> | sed 's/^\s*[0-9]\+\t/* /'</h2>
               <div class="box">
+                <h3>Contact Information</h3>
                 <p><strong>Mobile:</strong> +92-336-0563639</p>
                 <p><strong>Landline:</strong> +92-051-5490745</p>
                 <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
                 <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rashi8138" target="_blank">linkedin.com/in/rashi8138</a></p>
                 <p><strong>Github:</strong> <a href="https://github.com/ainumbat" target="_blank">github.com/ainumbat</a></p>
                 <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
-                    <span class="icon">&#x2709;</span> Chat on WhatsApp
+                    <span class="icon"><i class="fab fa-whatsapp"></i></span>&nbsp;Chat on WhatsApp
                 </a>
               </div>
           </section>
@@ -525,6 +528,7 @@
           <section class="contact-info" data-aos="fade-up">
               <h2>&gt; cat /Portfolio/<span class="section-title">Career_Objective.txt</span></h2>
               <div class="box">
+                <h3>Career Objective</h3>
                 <p>Passionate full-stack Laravel developer and AI enthusiast with over 8 years of industry experience. I aim to leverage my deep technical expertise and leadership skills to contribute to innovative software solutions. Currently focused on exploring the intersection of web development and artificial intelligence, with a long-term goal of advancing research in AGI and building impactful, intelligent systems.
                 </p>
               </div>
@@ -534,10 +538,9 @@
               <h2>&gt; ls -l /Portfolio/<span class="section-title">Academic_+_Professional_Background.txt</span>/</h2>
               <div class="box">
                 <h3>Education</h3>
-                <p><strong>School:</strong> High Aims School (1999 - 2008), Range Road, Rawalpindi (Playgroup to 8th grade)</p>
-                <p><strong>School:</strong> EFA High School (2009 - 2010), Matriculation (9th and 10th grades) with 75% marks</p>
-                <p><strong>College:</strong> Army Public College (2011-2012), Westridge III, Rawalpindi, Intermediate studies with 70% marks</p>
-                <p><strong>University:</strong> University of Engineering and Technology (UET), Taxila (2013-2016), Bachelor's degree with a CGPA of 2.8</p>
+                <p><strong>BSIT:</strong> University of Engineering and Technology (UET), Taxila (2013-2016), 2.8/4.0 CGPA</p>
+                <p><strong>HSSC:</strong> Army Public College, Rawalpindi (2011-2012), Intermediate studies with 70%</p>
+                <p><strong>SSC:</strong> EFA High School, Rawalpindi (2009 - 2010), Matriculation (9th and 10th grades) with 75%</p>
               </div>
 
               <div class="box">
@@ -567,42 +570,47 @@
               <h2>&gt; ls -l /Portfolio/<span class="section-title">Technical Skills</span>/</h2>
               <div class="skills-grid">
                   <div class="skill-category">
-                      <h3>Operating Systems</h3>
+                      <h3>Programming Languages</h3>
                       <ul>
-                          <li>Windows 98|XP|7|8|10</li>
-                          <li>Windows Server 2003</li>
-                          <li>Kali Linux</li>
-                          <li>MacOS</li>
-                          <li>Ubuntu</li>
+                          <li>PHP, Python</li>
+                          <li>Java, JavaScript</li>
+                          <li>C++</li>
                       </ul>
                   </div>
                   <div class="skill-category">
-                      <h3>Programming Languages</h3>
+                      <h3>ML/DL Frameworks</h3>
                       <ul>
-                          <li>C, C++, C#</li>
-                          <li>Java, JavaScript</li>
-                          <li>PHP, Python (numpy, pytorch, tensor-flow)</li>
+                          <li>Scikit-learn, HuggingFace</li>
+                          <li>PyTorch, TensorFlow</li> 
+                          <li>OpenCV</li>
                       </ul>
                   </div>
                   <div class="skill-category">
                       <h3>Databases</h3>
                       <ul>
-                          <li>Oracle, MySQL</li>
-                          <li>SQLite, MongoDB</li>
-                          <li>VectorDB</li>
+                          <li>MySQL, SQLite, PostgreSQL</li>
+                          <li>VectorDB (ChromaDB)</li>
+                          <li>MongoDB</li>
                       </ul>
                   </div>
                   <div class="skill-category">
                       <h3>Web Development</h3>
                       <ul>
-                          <li>Python Django</li>
                           <li>Php Laravel (PSR-12 coding style, Composer, Blade Template, Form Façade, Passport, Echo, Pusher, Voyger, Elixir, Mix, Artisan, Tinker, Eloquent)</li>
+                          <li>Python Django</li>
                           <li>JavaScript (jQuery, Ajax, Vue, Angular-1, Node, npm, Gulp, Grunt, HighChart, noUiSlider, axious, JSON)</li>
-                          <li>CSS (Bootstrap, MDBootstrap, W3.css, Materizecss, Media Queries, LESS, SASS)</li>
+                          <li>CSS (Bootstrap, MDBootstrap, W3.css, Materizecss, Media Queries, FlexBox, LESS, SASS)</li>
                           <li>HTML-5 (Semantic Elements, Canvas, Local Storage, Geolocation API, Required Attribute, Responsive Design, Drag and Drop API, WebSockets)</li>
                       </ul>
                   </div>
                   <div class="skill-category">
+                      <h3>Operating Systems</h3>
+                      <ul>
+                          <li>Windows 98|XP|7|8|10</li>
+                          <li>Windows Server 2003</li>
+                          <li>Ubuntu</li>
+                          <li>MacOS</li>
+                      </ul>
                       <h3>Software/Tools IDEs & Shells</h3>
                       <ul>
                           <li>Visual Studio Code</li>
@@ -611,15 +619,27 @@
                           <li>GitHub</li>
                       </ul>
                   </div>
-                  <div class="skill-category">
-                      <h3>Designing & Case tools</h3>
+                  <!-- <div class="skill-category">
+                      <h3>Software/Tools IDEs & Shells</h3>
                       <ul>
-                          <li>Software Ideas Modular</li>
-                          <li>Rational Rose</li>
-                          <li>Adobe Photoshop, Coral Draw</li>
+                          <li>Visual Studio Code</li>
+                          <li>Eclipse, Sublime Text</li>
+                          <li>Php Storm, PyCharm</li>
+                          <li>GitHub</li>
                       </ul>
-                  </div>
+                  </div> -->
                   <div class="skill-category">
+                      <h3>Tools and Platforms</h3>
+                      <ul>
+                          <li>Git, Google Colab, TEXmaker</li>
+                          <li>Clickup, Trello</li>
+                          <li>Redis, Mailgun</li>
+                      </ul>
+                      <h3>Design/Modeling</h3>
+                      <ul>
+                        <li>Software Ideas Modeler, Rational Rose</li>
+                        <li>Adobe Photoshop</li>
+                      </ul>
                       <h3>CMS</h3>
                       <ul>
                           <li>WordPress, Drupal, Joomla</li>
@@ -685,22 +705,22 @@
               <div class="box">
                 <h3>My Good Qualities</h3>
                 <ul class="qualities-list">
-                    <li>Efficient code</li>
-                    <li>Ask smart questions</li>
-                    <li>Try to complete work early</li>
-                    <li>Communicate with care</li>
-                    <li>Solution oriented approach</li>
-                    <li>Love to learn new things</li>
-                    <li>Lead in the team</li>
+                    <li class="good-qualities">Efficient code</li>
+                    <li class="good-qualities">Ask smart questions</li>
+                    <li class="good-qualities">Try to complete work early</li>
+                    <li class="good-qualities">Communicate with care</li>
+                    <li class="good-qualities">Solution oriented approach</li>
+                    <li class="good-qualities">Love to learn new things</li>
+                    <li class="good-qualities">Lead in the team</li>
                 </ul>
 
                 <h3>My Bad Qualities</h3>
-                <ul class="qualities-list bad-qualities-list">
-                    <li>Late Night Browsing</li>
-                    <li>I don't like my design</li>
-                    <li>More development at the end</li>
-                    <li>I don't like to rely on other people</li>
-                    <li>Addiction of Netflix and Video Games (COD 4 MW)</li>
+                <ul class="qualities-list">
+                    <li class="bad-qualities">Late Night Browsing</li>
+                    <li class="bad-qualities">I don't like my design</li>
+                    <li class="bad-qualities">More development at the end</li>
+                    <li class="bad-qualities">I don't like to rely on other people</li>
+                    <li class="bad-qualities">Addiction of Netflix and Video Games (COD 4 MW)</li>
                 </ul>
               </div>
 
@@ -759,7 +779,7 @@
             // Initial typing animation for loading screen
             const loadingTyped = new Typed(loadingTypedOutput, {
                 strings: ["~$ php artisan serve --host=https://ainumbat.github.io/RM --port=80", "loading..", "_____________","______________","_______________"],
-                typeSpeed: 40, //40
+                typeSpeed: 0, //40
                 backSpeed: 0,
                 startDelay: 500,
                 loop: false,
@@ -804,7 +824,7 @@
                             backSpeed: 25,
                             loop: true,
                             showCursor: true,
-                            cursorChar: '|',
+                            cursorChar: '_',
                         });
                     }, { once: true });
                 }
