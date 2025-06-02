@@ -12,6 +12,7 @@
             --secondary-color: #888888; /* Muted Grey for secondary text */
             --accent-color: #00FFFF; /* Cyan for additional accents */
             --bg-dark: #1A1A1A; /* Dark background */
+            --bg-ubuntu: #2C001E; /* Ubuntu terminal background */
             --text-light: #E0E0E0; /* Light text */
             --card-bg: #2A2A2A; /* Slightly lighter dark for cards */
             --border-color: #3A3A3A; /* Dark border */
@@ -24,7 +25,7 @@
             line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-dark);
+            background-color: #2C001E;
             color: var(--text-light);
             scroll-behavior: smooth;
             overflow-x: hidden; /* Prevent horizontal scroll */
@@ -38,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--bg-dark);
+            background-color: var(--bg-ubuntu);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -202,20 +203,34 @@
           color: var(--primary-color);
       }
 
+      .box {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+/*            background-color: #222222;*/
+            border-radius: 0; /* Removed border-radius */
+            box-shadow: none; /* Removed box-shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+      .box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 10px var(--shadow-medium); /* Add glow on hover */
+        }
+
       .contact-info p {
             margin: 8px 0;
             font-size: 1.1em;
         }
 
       .contact-info a {
-            color: var(--accent-color); /* Cyan links */
+            color: #FEFFFF; 
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
       .contact-info a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+            background-color: #80BB80;
         }
 
       .skills-grid {
@@ -230,6 +245,11 @@
             border-radius: 0; /* Removed border-radius */
             border: 1px solid var(--border-color); /* Kept a subtle border for internal elements */
             box-shadow: none; /* Removed box-shadow */
+        }
+
+      .skill-category:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 10px var(--shadow-medium); /* Add glow on hover */
         }
 
       .skill-category h3 {
@@ -272,11 +292,12 @@
         }
 
       .experience-item h3,.project-item h3 {
-            color: var(--primary-color);
             margin-top: 0;
             margin-bottom: 8px;
-            font-size: 1.8em;
             font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.3em;
+            font-weight: 200;
         }
 
       .experience-item p.duration,.project-item p.duration {
@@ -346,12 +367,12 @@
             align-items: center;
             background-color: #25D366; /* WhatsApp green */
             color: white;
-            padding: 15px 30px;
+            padding: 10px 25px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1em;
-            margin-top: 25px;
+            margin-top: 10px;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
@@ -467,7 +488,7 @@
         <pre><span id="loading-typed-output"></span></pre>
     </div>
 
-    <div id="main-content" style="display: none;">
+    <div id="main-content" style="display: none;">  
       <div class="container">
           <div class="hero-section">
               <div class="hero-content">
@@ -476,34 +497,70 @@
                       &gt; I am 
                       <span id="typed-output" class="typed-text"></span>
                   </p>
+                  <p>
+                      &gt; 
+                      <span id="barcode-line" class="typed-text"></span>
+                  </p>
+                  <p>
+                      &gt; 
+                      <span id="binary-line" class="typed-text"></span>
+                  </p>
               </div>
           </div>
 
+          <section class="contact-info" data-aos="fade-up">
+              <h2>&gt; nl -ba /Portfolio/<span class="section-title">Contact_Information.txt</span> | sed 's/^\s*[0-9]\+\t/* /'</h2>
+              <div class="box">
+                <p><strong>Mobile:</strong> +92-336-0563639</p>
+                <p><strong>Landline:</strong> +92-051-5490745</p>
+                <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rashi8138" target="_blank">linkedin.com/in/rashi8138</a></p>
+                <p><strong>Github:</strong> <a href="https://github.com/ainumbat" target="_blank">github.com/ainumbat</a></p>
+                <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
+                    <span class="icon">&#x2709;</span> Chat on WhatsApp
+                </a>
+              </div>
+          </section>
+
+          <section class="contact-info" data-aos="fade-up">
+              <h2>&gt; cat /Portfolio/<span class="section-title">Career_Objective.txt</span></h2>
+              <div class="box">
+                <p>Passionate full-stack Laravel developer and AI enthusiast with over 8 years of industry experience. I aim to leverage my deep technical expertise and leadership skills to contribute to innovative software solutions. Currently focused on exploring the intersection of web development and artificial intelligence, with a long-term goal of advancing research in AGI and building impactful, intelligent systems.
+                </p>
+              </div>
+          </section>
+
           <section class="academic-professional" data-aos="fade-up">
-              <h2>&gt; ls -l /Portfolio/<span class="section-title">Academic and Professional Background</span>/</h2>
-              <h3>Education</h3>
-              <p><strong>School:</strong> High Aims School (1999 - 2008), Range Road, Rawalpindi (Playgroup to 8th grade)</p>
-              <p><strong>School:</strong> EFA High School (2009 - 2010), Matriculation (9th and 10th grades) with 75% marks</p>
-              <p><strong>College:</strong> Army Public College (2011-2012), Westridge III, Rawalpindi, Intermediate studies with 70% marks</p>
-              <p><strong>University:</strong> University of Engineering and Technology (UET), Taxila (2013-2016), Bachelor's degree with a CGPA of 2.8</p>
+              <h2>&gt; ls -l /Portfolio/<span class="section-title">Academic_+_Professional_Background.txt</span>/</h2>
+              <div class="box">
+                <h3>Education</h3>
+                <p><strong>School:</strong> High Aims School (1999 - 2008), Range Road, Rawalpindi (Playgroup to 8th grade)</p>
+                <p><strong>School:</strong> EFA High School (2009 - 2010), Matriculation (9th and 10th grades) with 75% marks</p>
+                <p><strong>College:</strong> Army Public College (2011-2012), Westridge III, Rawalpindi, Intermediate studies with 70% marks</p>
+                <p><strong>University:</strong> University of Engineering and Technology (UET), Taxila (2013-2016), Bachelor's degree with a CGPA of 2.8</p>
+              </div>
 
-              <h3>Pakistan Army and Air Force Recruitment (2012)</h3>
-              <p>During the university application process in 2012, I also applied for the Short Service Commission in both the Army and Air Force, without prior preparation.</p>
-              <p>The selection process spanned multiple days and included:</p>
-              <ul>
-                  <li><strong>Written Test:</strong> Covered Physics, Mathematics, General Knowledge, and English.</li>
-                  <li><strong>Physical Test:</strong> Evaluated general physical abilities such as running, jumping, pull-ups, and chin-ups.</li>
-                  <li><strong>Medical Test:</strong> Comprehensive medical examination by a panel of doctors.</li>
-                  <li><strong>Psychological Interview:</strong> Conducted by a panel of Army officers and psychologists to assess temperament and decision-making abilities in complex scenarios.</li>
-              </ul>
-              <p>I successfully cleared all tests for both the Army and Air Force but chose not to proceed with the final selection process, as I had been accepted into my desired university and opted to pursue higher education.</p>
+              <div class="box">
+                <h3>Pakistan Army and Air Force Recruitment (2012)</h3>
+                <p>During the university application process in 2012, I also applied for the Short Service Commission in both the Army and Air Force, without prior preparation.</p>
+                <p>The selection process spanned multiple days and included:</p>
+                <ul>
+                    <li><strong>Written Test:</strong> Covered Physics, Mathematics, General Knowledge, and English.</li>
+                    <li><strong>Physical Test:</strong> Evaluated general physical abilities such as running, jumping, pull-ups, and chin-ups.</li>
+                    <li><strong>Medical Test:</strong> Comprehensive medical examination by a panel of doctors.</li>
+                    <li><strong>Psychological Interview:</strong> Conducted by a panel of Army officers and psychologists to assess temperament and decision-making abilities in complex scenarios.</li>
+                </ul>
+                <p>I successfully cleared all tests for both the Army and Air Force but chose not to proceed with the final selection process, as I had been accepted into my desired university and opted to pursue higher education.</p>
+              </div>
 
-              <h3>Honors and Achievements</h3>
-              <ul>
-                  <li><strong>2015:</strong> Won the intra-university General Knowledge competition at Federal Urdu University.</li>
-                  <li><strong>2016:</strong> Represented my university in web development competitions at IQRA University, Islamabad.</li>
-                  <li><strong>Final Year Project:</strong> Presented my project at the annual exhibition hosted by FAST University, Islamabad.</li>
-              </ul>
+              <div class="box">
+                <h3>Honors and Achievements</h3>
+                <ul>
+                    <li><strong>2015:</strong> Won the intra-university General Knowledge competition at Federal Urdu University.</li>
+                    <li><strong>2016:</strong> Represented my university in web development competitions at IQRA University, Islamabad.</li>
+                    <li><strong>Final Year Project:</strong> Presented my project at the annual exhibition hosted by FAST University, Islamabad.</li>
+                </ul>
+              </div>
           </section>
 
           <section class="technical-skills" data-aos="fade-up" data-aos-delay="100">
@@ -612,81 +669,76 @@
           <section class="projects" data-aos="fade-up" data-aos-delay="300">
               <h2>&gt; ls -l /Portfolio/<span class="section-title">My Projects</span>/</h2>
               <div class="project-item">
-                  <h3>Final Year Project - Curiosity Theme Artisan (CTA) – The Ultimate WordPress Theme Builder</h3>
-                  <p>Curiosity Theme Artisan (CTA) is an innovative platform designed for both end users and WordPress theme developers to create fully customized themes effortlessly. With CTA, anyone can build a professional WordPress theme without writing a single line of code.</p>
-                  <p>For developers, CTA is a powerful tool that streamlines theme creation, enabling the development of premium-quality ($1000+) WordPress themes in minutes. Designed with an intuitive and user-friendly interface, CTA caters to the entire WordPress community—beginners, designers, and experienced developers—offering a seamless and efficient theme-building experience.</p>
-              </div>
-              <div class="project-item">
-                  <h3>My Research Paper (Raw - not published yet)</h3>
+                  <h3>My Research Paper (DOI: https://doi.org/10.20944/preprints202505.2253.v1)</h3>
                   <h4>Title: The Illusion of Intelligence: Evaluating Large Language Models Against Grounded Criteria of Artificial General Intelligence</h4>
                   <p><strong>Abstract:</strong> As large language models (LLMs) become central to AI applications, their perceived intelligence often masks critical limitations. While LLMs demonstrate fluent language use and problem-solving, they fundamentally lack context-awareness, self-reflection, and the ability to act under constraints. This paper identifies a core issue: current LLMs produce seemingly intelligent outputs without possessing the internal mechanisms that constitute true intelligence. They fail to recognize or address their own limitations—such as hallucinations, inefficiency, and lack of common sense—and have not autonomously developed tools to enhance their performance. To address this gap, we propose a novel three-step benchmark for Artificial General Intelligence (AGI): Audit, Generate, Implement (AGI). This framework evaluates whether an AI system can autonomously assess its own failures, generate alternative strategies, and implement optimal solutions—all within fixed resource constraints. This approach reflects the way humans solve problems efficiently and adaptively, beyond mere pattern recognition. Our findings show that scaling models alone is insufficient for AGI. We emphasize that genuine intelligence requires meta-cognition, resource management, and tool creation—traits absent in current LLMs. This work offers a new direction and evaluative standard for future AI research, emphasizing cognitive depth over superficial linguistic performance.</p>
                   <p><em>“Language serves as a medium for expressing intelligence, not as a substrate for its storage.”</em></p>
               </div>
-          </section>
-
-          <section class="contact-info" data-aos="fade-up">
-              <h2>&gt; ls -l /Portfolio/<span class="section-title">Contact Information</span>/</h2>
-              <p><strong>Father Name:</strong> Mumraiz Khan</p>
-              <p><strong>Address:</strong> Street # 10, Range road, Rawalpindi, Pakistan</p>
-              <p><strong>Date of Birth:</strong> 05-11-1992</p>
-              <p><strong>Mobile:</strong> +92-336-0563639</p>
-              <p><strong>Landline:</strong> 051-5490745</p>
-              <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
-              <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/iamprodev" target="_blank">linkedin.com/in/iamprodev</a></p>
-              <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
-                  <span class="icon">&#x2709;</span> Chat on WhatsApp
-              </a>
+              <div class="project-item">
+                  <h3>2nd Order Effects of Large Language Models (Working on that)</h3>
+                  <p>Some details about this paper.</p>
+              </div>
           </section>
 
           <section class="about-me" data-aos="fade-up">
               <h2>&gt; ls -l /Portfolio/<span class="section-title">About Me</span>/</h2>
-              <h3>My Good Qualities</h3>
-              <ul class="qualities-list">
-                  <li>Efficient code</li>
-                  <li>Ask smart questions</li>
-                  <li>Try to complete work early</li>
-                  <li>Communicate with care</li>
-                  <li>Solution oriented approach</li>
-                  <li>Love to learn new things</li>
-                  <li>Lead in the team</li>
-              </ul>
+              <div class="box">
+                <h3>My Good Qualities</h3>
+                <ul class="qualities-list">
+                    <li>Efficient code</li>
+                    <li>Ask smart questions</li>
+                    <li>Try to complete work early</li>
+                    <li>Communicate with care</li>
+                    <li>Solution oriented approach</li>
+                    <li>Love to learn new things</li>
+                    <li>Lead in the team</li>
+                </ul>
 
-              <h3>My Bad Qualities</h3>
-              <ul class="qualities-list bad-qualities-list">
-                  <li>Late Night Browsing</li>
-                  <li>I don't like my design</li>
-                  <li>More development at the end</li>
-                  <li>I don't like to rely on other people</li>
-                  <li>Addiction of Netflix and Video Games (COD 4 MW)</li>
-              </ul>
+                <h3>My Bad Qualities</h3>
+                <ul class="qualities-list bad-qualities-list">
+                    <li>Late Night Browsing</li>
+                    <li>I don't like my design</li>
+                    <li>More development at the end</li>
+                    <li>I don't like to rely on other people</li>
+                    <li>Addiction of Netflix and Video Games (COD 4 MW)</li>
+                </ul>
+              </div>
 
-              <h3>A Long Break & Entry into AI</h3>
-              <p>Thanks to extensive coding experience gained through freelancing and an innovative final-year project during university, I was fortunate to receive job offers from three companies during my last semester. I joined one of these companies the very next day after completing my degree. Even during my bachelor's studies, I worked as a freelance web developer, handling various small-scale projects. Over my 8-year professional career, I worked for three companies without ever having a gap between jobs. Each time I left one company, I started at the next on the very next day. However, this relentless pace transformed me from a gym-going, fit athlete into a sedentary desk-bound nerd. By 2024, I realized the need for a much-needed long break to refocus and rejuvenate.</p>
-              <p>I've always been interested in AI and Machine Learning, but my demanding full-time jobs left little room for exploration. In the third quarter of 2024, I finally decided to pursue my curiosity for AI. I started by revisiting foundational concepts in Linear Algebra, Calculus, and Statistics to build a strong base for AI. Learning Python was my next step, and it felt incredibly intuitive compared to the steep learning curve of PHP. Since I was already familiar with PHP's Laravel framework, I chose to explore Django, Python’s powerful web framework, as a fallback for web development. Django was not only easy to learn but also a robust tool that broadened my programming capabilities.</p>
+              <div class="box">
+                <h3>A Long Break & Entry into AI</h3>
+                <p>Thanks to extensive coding experience gained through freelancing and an innovative final-year project during university, I was fortunate to receive job offers from three companies during my last semester. I joined one of these companies the very next day after completing my degree. Even during my bachelor's studies, I worked as a freelance web developer, handling various small-scale projects. Over my 8-year professional career, I worked for three companies without ever having a gap between jobs. Each time I left one company, I started at the next on the very next day. However, this relentless pace transformed me from a gym-going, fit athlete into a sedentary desk-bound nerd. By 2024, I realized the need for a much-needed long break to refocus and rejuvenate.</p>
+                <p>I've always been interested in AI and Machine Learning, but my demanding full-time jobs left little room for exploration. In the third quarter of 2024, I finally decided to pursue my curiosity for AI. I started by revisiting foundational concepts in Linear Algebra, Calculus, and Statistics to build a strong base for AI. Learning Python was my next step, and it felt incredibly intuitive compared to the steep learning curve of PHP. Since I was already familiar with PHP's Laravel framework, I chose to explore Django, Python’s powerful web framework, as a fallback for web development. Django was not only easy to learn but also a robust tool that broadened my programming capabilities.</p>
+              </div>
 
-              <h3>Journey Into Research Papers</h3>
-              <p>With the basics of Machine Learning in place, I began reading research papers to understand cutting-edge advancements in AI. My journey led me to explore Large Language Models (LLMs) and the transformers architecture through the seminal paper "Attention is All You Need." Along the way, I encountered papers like "Alice in the Borderland" and "Reversal Curse," which highlighted some inherent limitations of LLMs. One paper that truly inspired me was "On the Measure of Intelligence" by Dr. Francis Chollet, whose work encouraged me to delve deeper into these limitations. Motivated by these insights, I began working on my research paper titled "Can Intelligence Emerge Through Merely Knowing All the Answers?"</p>
-              <p>This journey has been transformative, blending my passion for AI with a deeper understanding of its challenges and possibilities.</p>
+              <div class="box">
+                <h3>Journey Into Research Papers</h3>
+                <p>With the basics of Machine Learning in place, I began reading research papers to understand cutting-edge advancements in AI. My journey led me to explore Large Language Models (LLMs) and the transformers architecture through the seminal paper "Attention is All You Need." Along the way, I encountered papers like "Alice in the Borderland" and "Reversal Curse," which highlighted some inherent limitations of LLMs. One paper that truly inspired me was "On the Measure of Intelligence" by Dr. Francis Chollet, whose work encouraged me to delve deeper into these limitations. Motivated by these insights, I began working on my research paper titled "Can Intelligence Emerge Through Merely Knowing All the Answers?"</p>
+                <p>This journey has been transformative, blending my passion for AI with a deeper understanding of its challenges and possibilities.</p>
+              </div>
 
-              <h3>Hobbies and Interests</h3>
-              <p>I enjoy a diverse range of hobbies that keep me engaged and fulfilled. These include watching Netflix for relaxation and entertainment, playing cricket to stay active, and indulging in immersive gaming sessions with Call of Duty: Modern Warfare. I also have a passion for repair and maintenance work at home, which allows me to channel my creativity and technical skills. Additionally, I take great interest in minimalist interior design, focusing on creating clean, functional, and aesthetically pleasing spaces.</p>
+              <div class="box">
+                <h3>Hobbies and Interests</h3>
+                <p>I enjoy a diverse range of hobbies that keep me engaged and fulfilled. These include watching Netflix for relaxation and entertainment, playing cricket to stay active, and indulging in immersive gaming sessions with Call of Duty: Modern Warfare. I also have a passion for repair and maintenance work at home, which allows me to channel my creativity and technical skills. Additionally, I take great interest in minimalist interior design, focusing on creating clean, functional, and aesthetically pleasing spaces.</p>
 
-              <h3>Passion for Construction</h3>
-              <p>I developed a deep love for construction at an early age, inspired by watching shows like MegaStructures on National Geographic and Discovery Channel. From a young age, I was captivated by building and design, often saving my pocket money to purchase tools for construction-related tasks—ranging from simple screwdrivers to hammer drill and advanced electrical equipment.</p>
-              <p>Over the years, I have personally designed residential homes spanning 1,500 to 5,000 square feet, including both single and double-story structures, using the online tool Homestyler.com. Beyond design, I actively participated in hands-on work, completing electrical and plumbing installations for most of these homes.</p>
-              <p>In one of my projects, I installed a comprehensive security system featuring motion detection alarms and integrated lighting. Additionally, I successfully carried out marble and tile work, installed wall paneling, and executed detailed interior designs.</p>
-              <p>Most notably, I designed and installed a 6kW hybrid solar system at my home, taking responsibility for every aspect—from constructing an elevated structure to laying electrical wiring, setting up solar panels, inverters, and control systems, as well as integrating safety breakers. This achievement reflects my dedication to sustainable living and my ability to manage complex technical projects.</p>
+                <h3>Passion for Construction</h3>
+                <p>I developed a deep love for construction at an early age, inspired by watching shows like MegaStructures on National Geographic and Discovery Channel. From a young age, I was captivated by building and design, often saving my pocket money to purchase tools for construction-related tasks—ranging from simple screwdrivers to hammer drill and advanced electrical equipment.</p>
+                <p>Over the years, I have personally designed residential homes spanning 1,500 to 5,000 square feet, including both single and double-story structures, using the online tool Homestyler.com. Beyond design, I actively participated in hands-on work, completing electrical and plumbing installations for most of these homes.</p>
+                <p>In one of my projects, I installed a comprehensive security system featuring motion detection alarms and integrated lighting. Additionally, I successfully carried out marble and tile work, installed wall paneling, and executed detailed interior designs.</p>
+                <p>Most notably, I designed and installed a 6kW hybrid solar system at my home, taking responsibility for every aspect—from constructing an elevated structure to laying electrical wiring, setting up solar panels, inverters, and control systems, as well as integrating safety breakers. This achievement reflects my dedication to sustainable living and my ability to manage complex technical projects.</p>
+              </div>
           </section>
 
           <section class="useful-tips" data-aos="fade-up">
               <h2>&gt; ls -l /Portfolio/<span class="section-title">Useful Tips</span>/</h2>
-              <ul class="tips-list">
-                  <li>Set 3 goals for day, week, month, year and life</li>
-                  <li>Avoid Screen Sucking, instead Read books</li>
-                  <li>Don't say yes to too many thing</li>
-                  <li>Never worry Alone, distribute your responsibilities</li>
-                  <li>Don’t rely on anyone</li>
-              </ul>
+              <div class="box">
+                <ul class="tips-list">
+                    <li>Set 3 goals for day, week, month, year and life</li>
+                    <li>Avoid Screen Sucking, instead Read books</li>
+                    <li>Don't say yes to too many thing</li>
+                    <li>Never worry Alone, distribute your responsibilities</li>
+                    <li>Don’t rely on anyone</li>
+                </ul>
+              </div>
           </section>
       </div>
 
@@ -706,8 +758,8 @@
 
             // Initial typing animation for loading screen
             const loadingTyped = new Typed(loadingTypedOutput, {
-                strings: ["~$ php artisan serve --host=github --port=80", "> loading.", "> loading..", "> loading..."],
-                typeSpeed: 40,
+                strings: ["~$ php artisan serve --host=https://ainumbat.github.io/RM --port=80", "loading..", "_____________","______________","_______________"],
+                typeSpeed: 40, //40
                 backSpeed: 0,
                 startDelay: 500,
                 loop: false,
@@ -735,6 +787,24 @@
                             loop: true,
                             showCursor: true,
                             cursorChar: '_',
+                        });
+
+                        new Typed('#barcode-line', {
+                            strings:["|&nbsp;|&nbsp;||&nbsp;&nbsp;|","|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;| ","|&nbsp;||&nbsp;&nbsp;|| ","|&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;","|&nbsp;|&nbsp;|&nbsp;&nbsp;|","|&nbsp;|&nbsp;&nbsp;|&nbsp;&nbsp;"],
+                            typeSpeed: 50,
+                            backSpeed: 25,
+                            loop: true,
+                            showCursor: true,
+                            cursorChar: '|',
+                        });
+
+                        new Typed('#binary-line', {
+                            strings:["01010010","01100001","01110011","01101000","01101001","01100100"],
+                            typeSpeed: 50,
+                            backSpeed: 25,
+                            loop: true,
+                            showCursor: true,
+                            cursorChar: '|',
                         });
                     }, { once: true });
                 }
