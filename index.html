@@ -51,7 +51,7 @@
         }
 
         #nn-canvas {
-          opacity: 0.25;
+          opacity: 0.45;
         }
 
         .bg-overlay {
@@ -168,11 +168,11 @@
             z-index: 1;
         }
 
-      .hero-section h1 {
+      .hero-content h1 {
 /*            font-family: 'Montserrat', sans-serif;*/
             font-family: 'Fira Code', monospace;
             margin-bottom: 10px;
-            font-size: 2.2em;
+            font-size: 4.0em;
             font-weight: 200;
 /*            text-shadow: 0 0 10px var(--primary-color);*/
         }
@@ -182,6 +182,17 @@
             font-weight: 200;
             opacity: 0.9;
             color: var(--text-light); 
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+      .hero-column {
+            padding: 20px;
+/*            border: 1px solid var(--border-color); */
         }
 
       .typed-text {
@@ -246,6 +257,7 @@
       .box:hover {
             transform: translateX(5px);
             box-shadow: 0 0 10px var(--shadow-medium); /* Add glow on hover */
+            background-color: var(--bg-ubuntu);
         }
 
       .contact-info p {
@@ -275,11 +287,13 @@
             border-radius: 0; /* Removed border-radius */
             border: 1px solid var(--border-color); /* Kept a subtle border for internal elements */
             box-shadow: none; /* Removed box-shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
       .skill-category:hover {
             transform: translateX(5px);
             box-shadow: 0 0 10px var(--shadow-medium); /* Add glow on hover */
+            background-color: var(--bg-ubuntu);
         }
 
       .skill-category h3 {
@@ -319,6 +333,7 @@
       .experience-item:hover,.project-item:hover {
             transform: translateX(5px);
             box-shadow: 0 0 10px var(--shadow-medium); /* Add glow on hover */
+            background-color: var(--bg-ubuntu);
         }
 
       .experience-item h3, .project-item h3, .skill-category h3, .box h3 {
@@ -524,9 +539,11 @@
 
     <div id="main-content" style="display: none;">  
       <div class="container">
-          <div class="hero-section">
+        <div class="hero-grid">
+          <div class="hero-section, hero-column">
               <div class="hero-content">
-                  <h1>Rashid Mehmood</h1>
+                  <h1 style="background-color: #2F2B2B;margin-bottom: 0;padding-left: 10px;">Rashid</h1> 
+                  <h2 style="background-color: #514949;margin-top: 0;padding-left: 15px;font-size: 3.3em;">Mehmood</h2>
                   <p>
                       &gt; I am 
                       <span id="typed-output" class="typed-text"></span>
@@ -542,20 +559,23 @@
               </div>
           </div>
 
-          <section class="contact-info" data-aos="fade-up">
-              <h2>&gt; nl -ba /Portfolio/<span class="section-title">Contact_Information.txt</span> | sed 's/^\s*[0-9]\+\t/* /'</h2>
-              <div class="box">
-                <h3>Contact Information</h3>
-                <p><strong>Mobile:</strong> +92-336-0563639</p>
-                <p><strong>Landline:</strong> +92-051-5490745</p>
-                <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
-                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rashi8138" target="_blank">linkedin.com/in/rashi8138</a></p>
-                <p><strong>Github:</strong> <a href="https://github.com/ainumbat" target="_blank">github.com/ainumbat</a></p>
-                <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
-                    <span class="icon"><i class="fab fa-whatsapp"></i></span>&nbsp;Chat on WhatsApp
-                </a>
-              </div>
-          </section>
+          <div class="hero-column">
+            <section class="contact-info" data-aos="fade-up">
+                <h2>&gt; nl -ba /Portfolio/<span class="section-title">Contact_Information.txt</span> | sed 's/^\s*[0-9]\+\t/* /'</h2>
+                <div class="box">
+                  <h3>Contact Information</h3>
+                  <p><strong>Mobile:</strong> +92-336-0563639</p>
+                  <p><strong>Landline:</strong> +92-051-5490745</p>
+                  <p><strong>Email:</strong> <a href="mailto:laravelprodev@gmail.com">laravelprodev@gmail.com</a></p>
+                  <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rashi8138" target="_blank">linkedin.com/in/rashi8138</a></p>
+                  <p><strong>Github:</strong> <a href="https://github.com/ainumbat" target="_blank">github.com/ainumbat</a></p>
+                  <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
+                      <span class="icon"><i class="fab fa-whatsapp"></i></span>&nbsp;Chat on WhatsApp
+                  </a>
+                </div>
+            </section>
+          </div>
+        </div>
 
           <section class="contact-info" data-aos="fade-up">
               <h2>&gt; cat /Portfolio/<span class="section-title">Career_Objective.txt</span></h2>
@@ -589,19 +609,6 @@
               </div>
 
               <div class="box">
-                <h3>Pakistan Army and Air Force Recruitment (2012)</h3>
-                <p>During the university application process in 2012, I also applied for the Short Service Commission in both the Army and Air Force, without prior preparation.</p>
-                <p>The selection process spanned multiple days and included:</p>
-                <ul>
-                    <li><strong>Written Test:</strong> Covered Physics, Mathematics, General Knowledge, and English.</li>
-                    <li><strong>Physical Test:</strong> Evaluated general physical abilities such as running, jumping, pull-ups, and chin-ups.</li>
-                    <li><strong>Medical Test:</strong> Comprehensive medical examination by a panel of doctors.</li>
-                    <li><strong>Psychological Interview:</strong> Conducted by a panel of Army officers and psychologists to assess temperament and decision-making abilities in complex scenarios.</li>
-                </ul>
-                <p>I successfully cleared all tests for both the Army and Air Force but chose not to proceed with the final selection process, as I had been accepted into my desired university and opted to pursue higher education.</p>
-              </div>
-
-              <div class="box">
                 <h3>Honors and Achievements</h3>
                 <ul>
                     <li><strong>2015:</strong> Won the intra-university General Knowledge competition at Federal Urdu University.</li>
@@ -612,7 +619,7 @@
           </section>
 
           <section class="technical-skills" data-aos="fade-up" data-aos-delay="100">
-              <h2>&gt; ls -l /Portfolio/<span class="section-title">Technical Skills</span>/</h2>
+              <h2>&gt; ls -l /Portfolio/<span class="section-title">Technical_Skills.txt</span>/</h2>
               <div class="skills-grid">
                   <div class="skill-category">
                       <h3>Programming Languages</h3>
@@ -644,7 +651,7 @@
                           <li>Php Laravel (PSR-12 coding style, Composer, Blade Template, Form Façade, Passport, Echo, Pusher, Voyger, Elixir, Mix, Artisan, Tinker, Eloquent)</li>
                           <li>Python Django</li>
                           <li>JavaScript (jQuery, Ajax, Vue, Angular-1, Node, npm, Gulp, Grunt, HighChart, noUiSlider, axious, JSON)</li>
-                          <li>CSS (Bootstrap, MDBootstrap, W3.css, Materizecss, Media Queries, FlexBox, LESS, SASS)</li>
+                          <li>CSS (Bootstrap, MDBootstrap, W3.css, Materizecss, Tailwind, Media Queries, FlexBox, LESS, SASS)</li>
                           <li>HTML-5 (Semantic Elements, Canvas, Local Storage, Geolocation API, Required Attribute, Responsive Design, Drag and Drop API, WebSockets)</li>
                       </ul>
                   </div>
@@ -653,14 +660,13 @@
                       <ul>
                           <li>cryptoapis.io, sumsub.com</li>
                           <li>chainalysis.com</li>
-                          <li></li>
+                          <li>2 Factor Authentication</li>
                       </ul>
                       <h3>Operating Systems</h3>
                       <ul>
                           <li>Windows 98|XP|7|8|10</li>
                           <li>Windows Server 2003</li>
-                          <li>Ubuntu</li>
-                          <li>MacOS</li>
+                          <li>Ubuntu, MacOS</li>
                       </ul>
                       <h3>Software/Tools IDEs & Shells</h3>
                       <ul>
@@ -692,7 +698,7 @@
           </section>
 
           <section class="professional-experience" data-aos="fade-up" data-aos-delay="200">
-              <h2>&gt; ls -l /Portfolio/<span class="section-title">Professional Work Experience</span>/</h2>
+              <h2>&gt; ls -l /Portfolio/<span class="section-title">Professional_Work_Experience.txt</span>/</h2>
               <div class="experience-item">
                   <h3>Freelancing</h3>
                   <p class="duration">2015 - 2016</p>
@@ -730,7 +736,7 @@
           </section>
 
           <section class="projects" data-aos="fade-up" data-aos-delay="300">
-              <h2>&gt; ls -l /Portfolio/<span class="section-title">My Projects</span>/</h2>
+              <h2>&gt; ls -l /Portfolio/<span class="section-title">Research_Projects.txt</span>/</h2>
               <div class="project-item">
                   <h3>My Research Paper (DOI: https://doi.org/10.20944/preprints202505.2253.v1)</h3>
                   <h4>Title: The Illusion of Intelligence: Evaluating Large Language Models Against Grounded Criteria of Artificial General Intelligence</h4>
@@ -744,7 +750,7 @@
           </section>
 
           <section class="about-me" data-aos="fade-up">
-              <h2>&gt; ls -l /Portfolio/<span class="section-title">About Me</span>/</h2>
+              <h2>&gt; ls -l /Portfolio/<span class="section-title">About_Me.txt</span>/</h2>
               <div class="box">
                 <h3>My Good Qualities</h3>
                 <ul class="qualities-list">
@@ -777,6 +783,19 @@
                 <h3>Journey Into Research Papers</h3>
                 <p>With the basics of Machine Learning in place, I began reading research papers to understand cutting-edge advancements in AI. My journey led me to explore Large Language Models (LLMs) and the transformers architecture through the seminal paper "Attention is All You Need." Along the way, I encountered papers like "Alice in the Borderland" and "Reversal Curse," which highlighted some inherent limitations of LLMs. One paper that truly inspired me was "On the Measure of Intelligence" by Dr. Francis Chollet, whose work encouraged me to delve deeper into these limitations. Motivated by these insights, I began working on my research paper titled "Can Intelligence Emerge Through Merely Knowing All the Answers?"</p>
                 <p>This journey has been transformative, blending my passion for AI with a deeper understanding of its challenges and possibilities.</p>
+              </div>
+
+              <div class="box">
+                <h3>Pakistan Army and Air Force Recruitment (2012)</h3>
+                <p>During the university application process in 2012, I also applied for the Short Service Commission in both the Army and Air Force, without prior preparation.</p>
+                <p>The selection process spanned multiple days and included:</p>
+                <ul>
+                    <li><strong>Written Test:</strong> Covered Physics, Mathematics, General Knowledge, and English.</li>
+                    <li><strong>Physical Test:</strong> Evaluated general physical abilities such as running, jumping, pull-ups, and chin-ups.</li>
+                    <li><strong>Medical Test:</strong> Comprehensive medical examination by a panel of doctors.</li>
+                    <li><strong>Psychological Interview:</strong> Conducted by a panel of Army officers and psychologists to assess temperament and decision-making abilities in complex scenarios.</li>
+                </ul>
+                <p>I successfully cleared all tests for both the Army and Air Force but chose not to proceed with the final selection process, as I had been accepted into my desired university and opted to pursue higher education.</p>
               </div>
 
               <div class="box">
@@ -828,7 +847,7 @@
             // Initial typing animation for loading screen
             const loadingTyped = new Typed(loadingTypedOutput, {
                 strings: ["~$ php artisan serve --host=https://ainumbat.github.io/RM --port=80", "loading..", "_____________","______________","_______________"],
-                typeSpeed: 40, //40
+                typeSpeed: 0, //40
                 backSpeed: 0,
                 startDelay: 500,
                 loop: false,
