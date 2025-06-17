@@ -30,15 +30,9 @@
             color: var(--text-light);
             scroll-behavior: smooth;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto;
             position: relative;
         }
-
-        /*html, body {
-          margin: 0;
-          padding: 0;
-          height: 100%;
-          overflow-y: scroll;
-        }*/
 
         #nn-canvas, .bg-overlay {
           position: fixed;
@@ -131,6 +125,23 @@
             position: relative;
             z-index: 1;
             border: none; /* Removed border */
+        }
+
+        #first-name {
+          background-color: #2F2B2B;
+          margin-bottom: 0;
+          padding-left: 10px;
+        }
+        #last-name {
+          background-color: #514949;
+          margin-top: 0;
+          padding-left: 15px;
+          font-size: 3.3em;
+        }
+
+        .full-name:hover #first-name,
+        .full-name:hover #last-name {
+            background-color: transparent;
         }
 
       .hero-section {
@@ -542,8 +553,10 @@
         <div class="hero-grid">
           <div class="hero-section, hero-column">
               <div class="hero-content">
-                  <h1 style="background-color: #2F2B2B;margin-bottom: 0;padding-left: 10px;">Rashid</h1> 
-                  <h2 style="background-color: #514949;margin-top: 0;padding-left: 15px;font-size: 3.3em;">Mehmood</h2>
+                  <div class="full-name">
+                    <h1 id="first-name">Rashid</h1> 
+                    <h2 id="last-name">Mehmood</h2>
+                  </div>
                   <p>
                       &gt; I am 
                       <span id="typed-output" class="typed-text"></span>
@@ -561,7 +574,7 @@
 
           <div class="hero-column">
             <section class="contact-info" data-aos="fade-up">
-                <h2>&gt; nl -ba /Portfolio/<span class="section-title">Contact_Information.txt</span> | sed 's/^\s*[0-9]\+\t/* /'</h2>
+                <h2 style="margin-top: 35px;">&gt; nl -ba /Portfolio/<span class="section-title">Contact_Information.txt</span> | sed 's/^\s*[0-9]\+\t/* /'</h2>
                 <div class="box">
                   <h3>Contact Information</h3>
                   <p><strong>Mobile:</strong> +92-336-0563639</p>
@@ -570,7 +583,7 @@
                   <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rashi8138" target="_blank">linkedin.com/in/rashi8138</a></p>
                   <p><strong>Github:</strong> <a href="https://github.com/ainumbat" target="_blank">github.com/ainumbat</a></p>
                   <a href="https://wa.me/923360563639" target="_blank" class="whatsapp-button">
-                      <span class="icon"><i class="fab fa-whatsapp"></i></span>&nbsp;Chat on WhatsApp
+                      <span class="icon"><i class="fab fa-whatsapp"></i></span>&nbsp;Chat
                   </a>
                 </div>
             </section>
@@ -603,9 +616,9 @@
               <h2>&gt; ls -l /Portfolio/<span class="section-title">Academic_+_Professional_Background.txt</span>/</h2>
               <div class="box">
                 <h3>Education</h3>
-                <p><strong>BSIT:</strong> University of Engineering and Technology (UET), Taxila (2013-2016), 2.8/4.0 CGPA</p>
-                <p><strong>HSSC:</strong> Army Public College, Rawalpindi (2011-2012), Intermediate studies with 70%</p>
-                <p><strong>SSC:</strong> EFA High School, Rawalpindi (2009 - 2010), Matriculation (9th and 10th grades) with 75%</p>
+                <p><strong>BSIT:</strong> (2013 - 2016) University of Engineering and Technology (UET), Taxila</p>
+                <p><strong>HSSC:</strong> (2011 - 2012) Army Public College, Westridge, Rawalpindi</p>
+                <p><strong>SSC:</strong> (2009 - 2010) EFA High School, Rawalpindi</p>
               </div>
 
               <div class="box">
@@ -613,7 +626,7 @@
                 <ul>
                     <li><strong>2015:</strong> Won the intra-university General Knowledge competition at Federal Urdu University.</li>
                     <li><strong>2016:</strong> Represented my university in web development competitions at IQRA University, Islamabad.</li>
-                    <li><strong>Final Year Project:</strong> Presented my project at the annual exhibition hosted by FAST University, Islamabad.</li>
+                    <li><strong>2017:</strong> Presented my Final Year Project at the annual exhibition hosted by FAST University, Islamabad.</li>
                 </ul>
               </div>
           </section>
@@ -847,7 +860,7 @@
             // Initial typing animation for loading screen
             const loadingTyped = new Typed(loadingTypedOutput, {
                 strings: ["~$ php artisan serve --host=https://ainumbat.github.io/RM --port=80", "loading..", "_____________","______________","_______________"],
-                typeSpeed: 0, //40
+                typeSpeed: 40, //40
                 backSpeed: 0,
                 startDelay: 500,
                 loop: false,
@@ -903,210 +916,227 @@
     </script>
 
     <script>
-const canvas = document.getElementById('nn-canvas');
-const ctx = canvas.getContext('2d');
+        const canvas = document.getElementById('nn-canvas');
+        const ctx = canvas.getContext('2d');
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-const layers = [4, 6, 6, 6, 2];
-const nodes = [];
-const connections = [];
-const pulses = [];
-
-function sigmoid(x) {
-  return 1 / (1 + Math.exp(-x));
-}
-
-function softmax(arr) {
-  const exps = arr.map(Math.exp);
-  const sum = exps.reduce((a, b) => a + b, 0);
-  return exps.map(v => v / sum);
-}
-
-function setupNetwork() {
-  const layerSpacingX = canvas.width / (layers.length + 1);
-  let nodeId = 0;
-
-  layers.forEach((count, layerIndex) => {
-    const spacingY = canvas.height / (count + 1);
-    for (let i = 0; i < count; i++) {
-      nodes.push({
-        id: nodeId++,
-        layer: layerIndex,
-        x: layerSpacingX * (layerIndex + 1),
-        y: spacingY * (i + 1),
-        bias: Math.random() * 2 - 1,
-        value: 0,
-        rawSum: 0,
-        active: 0
-      });
-    }
-  });
-
-  for (let i = 0; i < layers.length - 1; i++) {
-    const fromLayer = nodes.filter(n => n.layer === i);
-    const toLayer = nodes.filter(n => n.layer === i + 1);
-    fromLayer.forEach(from => {
-      toLayer.forEach(to => {
-        const weight = Math.random() * 2 - 1;
-        connections.push({
-          from,
-          to,
-          weight,
-          pulseTimer: Math.random() * 50
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            resizeCanvas();
+            setupNetwork();
+          }, 300);
         });
-      });
-    });
-  }
-}
 
-function randomizeInputs() {
-  nodes.filter(n => n.layer === 0).forEach(n => {
-    n.value = Math.random();
-    n.active = 1;
-  });
-}
-setInterval(() => {
-  randomizeInputs();
-  randomizeWeightsAndBiases();
-}, 500);
+        const layers = [4, 6, 6, 6, 2];
+        const nodes = [];
+        const connections = [];
+        const pulses = [];
 
-function randomizeWeightsAndBiases() {
-  connections.forEach(c => c.weight += (Math.random() - 0.5) * 0.1);
-  nodes.forEach(n => {
-    if (n.layer > 0) {
-      n.bias += (Math.random() - 0.5) * 0.1;
-    }
-  });
-}
+        function sigmoid(x) {
+          return 1 / (1 + Math.exp(-x));
+        }
 
-function accumulateValues() {
-  nodes.forEach(n => {
-    if (n.layer > 0) {
-      n.rawSum = 0;
-      n.value = 0;
-    }
-  });
+        function softmax(arr) {
+          const exps = arr.map(Math.exp);
+          const sum = exps.reduce((a, b) => a + b, 0);
+          return exps.map(v => v / sum);
+        }
 
-  connections.forEach(link => {
-    const output = link.from.value * link.weight;
-    link.to.rawSum += output;
-  });
+        function setupNetwork() {
+          const isMobile = window.innerWidth < 768;
 
-  for (let l = 1; l < layers.length - 1; l++) {
-    nodes.filter(n => n.layer === l).forEach(n => {
-      n.value = sigmoid(n.rawSum + n.bias);
-    });
-  }
+          // Adjust layers: fewer neurons on small screens
+          const adjustedLayers = isMobile ? [2, 4, 4, 1] : [3, 6, 6, 6, 2];
+          layers.length = 0;
+          adjustedLayers.forEach(l => layers.push(l));
 
-  const outputNodes = nodes.filter(n => n.layer === layers.length - 1);
-  const rawSums = outputNodes.map(n => n.rawSum + n.bias);
-  const probs = softmax(rawSums);
-  outputNodes.forEach((n, i) => {
-    n.value = probs[i];
-  });
-}
+          const layerSpacingX = canvas.width / (layers.length + 1);
+          let nodeId = 0;
+          nodes.length = 0;
+          connections.length = 0;
 
-function animatePulses() {
-  connections.forEach(link => {
-    link.pulseTimer -= 1;
-    if (link.pulseTimer <= 0) {
-      pulses.push({
-        from: link.from,
-        to: link.to,
-        weight: link.weight,
-        progress: 0
-      });
-      link.pulseTimer = 30 + Math.random() * 40;
-    }
-  });
+          layers.forEach((count, layerIndex) => {
+            const spacingY = canvas.height / (count + 1);
+            for (let i = 0; i < count; i++) {
+              nodes.push({
+                id: nodeId++,
+                layer: layerIndex,
+                x: layerSpacingX * (layerIndex + 1),
+                y: spacingY * (i + 1),
+                bias: Math.random() * 2 - 1,
+                value: 0,
+                rawSum: 0,
+                active: 0
+              });
+            }
+          });
 
-  pulses.forEach(p => {
-    p.progress += 0.02 + Math.abs(p.weight) * 0.02;
-    if (p.progress >= 1) {
-      p.to.active = 1;
-    }
-  });
+          for (let i = 0; i < layers.length - 1; i++) {
+            const fromLayer = nodes.filter(n => n.layer === i);
+            const toLayer = nodes.filter(n => n.layer === i + 1);
+            fromLayer.forEach(from => {
+              toLayer.forEach(to => {
+                const weight = Math.random() * 2 - 1;
+                connections.push({
+                  from,
+                  to,
+                  weight,
+                  pulseTimer: Math.random() * 50
+                });
+              });
+            });
+          }
+        }
 
-  for (let i = pulses.length - 1; i >= 0; i--) {
-    if (pulses[i].progress >= 1) pulses.splice(i, 1);
-  }
-}
+        function randomizeInputs() {
+          nodes.filter(n => n.layer === 0).forEach(n => {
+            n.value = Math.random();
+            n.active = 1;
+          });
+        }
+        setInterval(() => {
+          randomizeInputs();
+          randomizeWeightsAndBiases();
+        }, 500);
 
-function drawNetwork() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function randomizeWeightsAndBiases() {
+          connections.forEach(c => c.weight += (Math.random() - 0.5) * 0.1);
+          nodes.forEach(n => {
+            if (n.layer > 0) {
+              n.bias += (Math.random() - 0.5) * 0.1;
+            }
+          });
+        }
 
-  connections.forEach(link => {
-    const { from, to, weight } = link;
-    const color = weight > 0 ? `rgba(0,255,0,${Math.min(Math.abs(weight), 1)})` : `rgba(255,0,0,${Math.min(Math.abs(weight), 1)})`;
-    const thickness = Math.max(1, Math.abs(weight) * 3);
-    ctx.beginPath();
-    ctx.moveTo(from.x, from.y);
-    ctx.lineTo(to.x, to.y);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = thickness;
-    ctx.stroke();
+        function accumulateValues() {
+          nodes.forEach(n => {
+            if (n.layer > 0) {
+              n.rawSum = 0;
+              n.value = 0;
+            }
+          });
 
-    const mx = (from.x + to.x) / 2;
-    const my = (from.y + to.y) / 2;
-    ctx.fillStyle = '#ccc';
-    ctx.font = '10px monospace';
-    ctx.fillText(weight.toFixed(2), mx + 4, my + 4);
-  });
+          connections.forEach(link => {
+            const output = link.from.value * link.weight;
+            link.to.rawSum += output;
+          });
 
-  pulses.forEach(p => {
-    const { from, to, progress, weight } = p;
-    const x = from.x + (to.x - from.x) * progress;
-    const y = from.y + (to.y - from.y) * progress;
-    ctx.beginPath();
-    ctx.arc(x, y, 3, 0, 2 * Math.PI);
-    ctx.fillStyle = weight > 0 ? '#0f0' : '#f00';
-    ctx.fill();
-  });
+          for (let l = 1; l < layers.length - 1; l++) {
+            nodes.filter(n => n.layer === l).forEach(n => {
+              n.value = sigmoid(n.rawSum + n.bias);
+            });
+          }
 
-  nodes.forEach(n => {
-    const r = 14 + n.active * 4;
-    if (n.active > 0.05) {
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, r + 5, 0, 2 * Math.PI);
-      ctx.fillStyle = `rgba(0,255,180,${n.active * 0.2})`;
-      ctx.fill();
-    }
+          const outputNodes = nodes.filter(n => n.layer === layers.length - 1);
+          const rawSums = outputNodes.map(n => n.rawSum + n.bias);
+          const probs = softmax(rawSums);
+          outputNodes.forEach((n, i) => {
+            n.value = probs[i];
+          });
+        }
 
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, r, 0, 2 * Math.PI);
-    ctx.fillStyle = '#0f0';
-    ctx.fill();
-    ctx.strokeStyle = '#0c0';
-    ctx.stroke();
+        function animatePulses() {
+          connections.forEach(link => {
+            link.pulseTimer -= 1;
+            if (link.pulseTimer <= 0) {
+              pulses.push({
+                from: link.from,
+                to: link.to,
+                weight: link.weight,
+                progress: 0
+              });
+              link.pulseTimer = 30 + Math.random() * 40;
+            }
+          });
 
-    ctx.fillStyle = '#000';
-    ctx.font = '10px monospace';
-    ctx.fillText(n.value.toFixed(2), n.x - 10, n.y + 4);
+          pulses.forEach(p => {
+            p.progress += 0.02 + Math.abs(p.weight) * 0.02;
+            if (p.progress >= 1) {
+              p.to.active = 1;
+            }
+          });
 
-    ctx.fillStyle = '#999';
-    ctx.font = '10px monospace';
-    ctx.fillText(`b=${n.bias.toFixed(2)}`, n.x - 16, n.y + 18);
+          for (let i = pulses.length - 1; i >= 0; i--) {
+            if (pulses[i].progress >= 1) pulses.splice(i, 1);
+          }
+        }
 
-    n.active *= 0.9;
-  });
-}
+        function drawNetwork() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-function loop() {
-  accumulateValues();
-  animatePulses();
-  drawNetwork();
-  requestAnimationFrame(loop);
-}
+          connections.forEach(link => {
+            const { from, to, weight } = link;
+            const color = weight > 0 ? `rgba(0,255,0,${Math.min(Math.abs(weight), 1)})` : `rgba(255,0,0,${Math.min(Math.abs(weight), 1)})`;
+            const thickness = Math.max(1, Math.abs(weight) * 3);
+            ctx.beginPath();
+            ctx.moveTo(from.x, from.y);
+            ctx.lineTo(to.x, to.y);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = thickness;
+            ctx.stroke();
 
-setupNetwork();
-randomizeInputs();
-loop();
-</script>
+            const mx = (from.x + to.x) / 2;
+            const my = (from.y + to.y) / 2;
+            ctx.fillStyle = '#ccc';
+            ctx.font = '10px monospace';
+            ctx.fillText(weight.toFixed(2), mx + 4, my + 4);
+          });
+
+          pulses.forEach(p => {
+            const { from, to, progress, weight } = p;
+            const x = from.x + (to.x - from.x) * progress;
+            const y = from.y + (to.y - from.y) * progress;
+            ctx.beginPath();
+            ctx.arc(x, y, 3, 0, 2 * Math.PI);
+            ctx.fillStyle = weight > 0 ? '#0f0' : '#f00';
+            ctx.fill();
+          });
+
+          nodes.forEach(n => {
+            const r = 14 + n.active * 4;
+            if (n.active > 0.05) {
+              ctx.beginPath();
+              ctx.arc(n.x, n.y, r + 5, 0, 2 * Math.PI);
+              ctx.fillStyle = `rgba(0,255,180,${n.active * 0.2})`;
+              ctx.fill();
+            }
+
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, r, 0, 2 * Math.PI);
+            ctx.fillStyle = '#0f0';
+            ctx.fill();
+            ctx.strokeStyle = '#0c0';
+            ctx.stroke();
+
+            ctx.fillStyle = '#000';
+            ctx.font = '10px monospace';
+            ctx.fillText(n.value.toFixed(2), n.x - 10, n.y + 4);
+
+            ctx.fillStyle = '#999';
+            ctx.font = '10px monospace';
+            ctx.fillText(`b=${n.bias.toFixed(2)}`, n.x - 16, n.y + 18);
+
+            n.active *= 0.9;
+          });
+        }
+
+        function loop() {
+          accumulateValues();
+          animatePulses();
+          drawNetwork();
+          requestAnimationFrame(loop);
+        }
+
+        resizeCanvas();
+        setupNetwork();
+        randomizeInputs();
+        loop();
+    </script>
 </body>
 </html>
